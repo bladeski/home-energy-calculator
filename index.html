@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<title>New Home Energy Calculator</title>
+		<meta name="description" content="Web App that calculates an estimated energy usage for a property based on criteria provided by the user or by performing a Zoopla search." />
+		<meta name="author" content="Jonathan Blades" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<link rel="shortcut icon" href="icon/favicon.ico" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="icon/apple-touch-icon.png" />
+		<link rel="apple-touch-icon" sizes="57x57" href="icon/apple-touch-icon-57x57.png" />
+		<link rel="apple-touch-icon" sizes="72x72" href="icon/apple-touch-icon-72x72.png" />
+		<link rel="apple-touch-icon" sizes="114x114" href="icon/apple-touch-icon-114x114.png" />
+		<link rel="apple-touch-icon" sizes="144x144" href="icon/apple-touch-icon-144x144.png" />
+		
+		<link href="./style/css_reset.css" rel="stylesheet" type="text/css">
+		<link href="./style/style.css" rel="stylesheet" type="text/css">
+		
+		<script src="javascript/dataFunctions.js"></script>
+		
+		<!-- Include the latest jQuery API, hosted by Google -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		
+		<!-- Include the Google Maps API to allow Zoopla queries to show on a map -->
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true"></script>
+
+    	<script>
+			google.maps.visualRefresh = true;
+			var map;
+			
+			// Initialise the Google Maps map 
+			function initialize() {
+			  var mapOptions = {
+			    zoom: 12,
+			    mapTypeId: google.maps.MapTypeId.ROADMAP
+			  };
+			  map = new google.maps.Map(document.getElementById('map-canvas'),
+			      mapOptions);
+			
+			  // Try HTML5 geolocation
+			  if(navigator.geolocation) {
+			    navigator.geolocation.getCurrentPosition(function(position) {
+			      var pos = new google.maps.LatLng(position.coords.latitude,
+			                                       position.coords.longitude);
+			
+			      map.setCenter(pos);
+			    }, function() {
+			      handleNoGeolocation(true);
+			    });
+			  } else {
+			    // Browser doesn't support Geolocation
+			    handleNoGeolocation(false);
+			  }
+				
+			}
+			
+			function handleNoGeolocation(errorFlag) {
+			
+			// Reset the map to centre in London, should the geolocation be switched off or not working on the device. 
+			  var options = {
+			    map: map,
+			    position: new google.maps.LatLng(51.5171, 0.1062),
+			    content: content
+			  };
+			
+			  var infowindow = new google.maps.InfoWindow(options);
+			  map.setCenter(options.position);
+			} 
+			
+			google.maps.event.addDomListener(window, 'load', initialize);
+
+    	</script>
+	
+	</head>
+
+	<body>
+		<!-- Top section of the app, displays header, tips for using the app, and result of energy calculation 
+			As with each section of the app, this is split into 5 sections or pages.
+			Only one of these sections is visible at any one time, due to the way the CSS and JavaScript works.-->
+		<article id="top">
+			<section class="result-screen">
+				<div class="sub-section">
+					<p id="buyer-results" class="heading">Best Deal: £<span class="result">10,000</span>/month</p>
+				</div>
+			</section>
+			<section class="result-screen">
+				<div class="sub-section">
+					<p class="help">Fill out the form below to search for a new home. </p>
+					<p class="help">Then select a property to calculate your energy estimate!</p>
+				</div>
+			</section>
+			<section class="result-screen">
+				<div class="sub-section">
+					<p class="heading">New Home Energy Calculator</p>
+				</div>
+			</section>
+			<section class="result-screen">
+				<div class="sub-section">
+					<p class="help">Tell us about your property!</p>
+					<p class="help">Give as much information as possible and we will create an estimated energy spend for you!</p>
+				</div>
+			</section>
+			<section class="result-screen">
+				<div class="sub-section">
+					<p id="owner-results" class="heading">Best Deal: £<span class="result">10,000</span>/month</p>
+				</div>
+			</section>
+		</article>
+		
+		<!-- Main section of the app - area to allow users to choose a property for sale/let, or input their own property details --> 	
+		<article id="middle">
+			<section id="buyer-page2" class="main-section">
+				<div class="sub-section">
+					<p class="results">Gas: £<span class="gas-result">10,000</span>/month</p>
+					<p class="results">Electricity: £<span class="elec-result">10,000</span>/month</p>
+					
+				</div>
+				<a id="bp2-back">BACK&gt;</a>				
+			</section>
+			<section id="buyer-page1" class="main-section">
+				<div class="sub-section">
+					<form id="buyer-form">
+						<p>Do you plan to: 
+							<input type="radio" name="listing-status" value="sale"/>Buy -or- 
+							<input type="radio" name="listing-status" value="rent"/>Rent
+						</p>
+						<p>Enter the postcode: <input type="text" name="postcode"/>
+						</p>
+						<p>What is your propery price-range?<br>
+							£<input type="number" name="min-price" class="number-input"/><span id="min-price" class="price-range"> </span> Minimum<br>
+							£<input type="number" name="max-price" class="number-input"/><span id="max-price" class="price-range"> </span> Maximum
+						</p>
+						<a href="#" id="search-button" class="button">SEARCH</a>
+					</form>	
+				</div>
+				<a id="bp1-back">BACK&gt;</a>				
+			</section>
+			<section id="frontPage">
+				<div id="homeImage">
+				
+				</div>
+			</section>
+			<section id="owner-page1" class="main-section">
+				<div class="sub-section">
+					<form id="owner-form">
+						<p>Where is you current property?<br>
+							Select the region: <select id="regionList" name="region" form="owner-form">
+							</select>
+						</p>
+						<p>If you know your current energy usage, enter it here:<br>
+							<input type="number" name="gas-usage" value="0" class="number-input"/>kWh (Gas)<br>
+							<input type="number" name="elec-usage" value="0" class="number-input"/>kWh (Electricity)
+						</p>
+						<a href="#" id="next-button1" class="button">NEXT</a>
+					</form>	
+				</div>	
+				<a id="op1-back">&lt;BACK</a>			
+			</section>
+			<section id="owner-page2" class="main-section">
+				<div class="sub-section">
+					<p class="results">Gas: £<span class="gas-result">10,000</span>/month</p>
+					<p class="results">Electricity: £<span class="elec-result">10,000</span>/month</p>
+				</div>
+				<a id="op2-back">&lt;BACK</a>				
+			</section>
+		</article>
+		
+		<!-- Bottom main section of the app - providing both a map for displaying property locations and also further areas for entering property information -->
+		<article id="bottom">
+			<section id="buyer-page2a" class="main-section">
+				<div class="sub-section info">
+					<p>Recommended Tariff: <span class="tariff"></span></p>
+					<p>We would recommend that you choose this npower tariff to provide you with the best deal, based on the data that you have provided to us.</p>
+					<!-- Provide a link to the relevant npower page for the tariff selected. --> 
+					<p><a href="http://www.npower.com/Home/electricity-and-gas/products/">Click here</a> for more information on this product.</p>
+				</div>
+			</section>
+			<section id="buyer-page1a" class="main-section">
+				<div class="sub-section">
+					<!-- Display the Google Map Canvas -->
+					<div id="map-canvas">
+						
+					</div>
+				</div>
+			</section>
+			<section>
+				<div id="mainLinks">
+					<p><a id="newHome">&lt; I am looking for a new home</a></p>
+					<p><a id="owner">I have already found my home &gt;</a></p>
+				</div>
+			</section>
+			<section id="owner-page1a" class="main-section">
+				<div class="sub-section">
+					<form id="owner-form2">
+						<p>Enter your property details:</p>
+						<p>
+							Property Type <select name="propertyType" form="owner-form2">
+								<option value="Detached">Detached</option>
+								<option value="Semi-detached">Semi-detached</option>
+								<option value="Terraced">Terraced</option>
+								<option value="Bungalow">Bungalow</option>
+								<option value="Flat">Flat</option>
+								<option value="Other">Other</option>
+							</select><br>
+							Number of Bedrooms <select name="bedrooms" form="owner-form2">
+								<option value="1 to 2">1 to 2</option>
+								<option value="3">3</option>
+								<option value="4 +">4 +</option>
+							</select><br>
+							Age of Property <select name="age" form="owner-form2">
+								<option value=""></option>
+								<option value="pre 1870">pre 1870</option>
+								<option value="1871 - 1919">1871 - 1919</option>
+								<option value="1920 - 1945">1920 - 1945</option>
+								<option value="1946 - 1954">1946 - 1954</option>
+								<option value="1955 - 1979">1955 - 1979</option>
+								<option value="post 1980">post 1980</option>
+							</select><br>
+							Has gas? <input type="checkbox" name="hasGas" value="hasGas" checked/>
+						</p>
+						<p>
+							
+						</p>
+						<a href="#" id="next-button2" class="button">NEXT</a>
+					</form>	
+				</div>
+			</section>
+			<section id="owner-page2a" class="main-section">
+				<div class="sub-section info">
+					<p>Recommended Tariff: <span class="tariff"></span></p>
+					<p>We would recommend that you choose this npower tariff to provide you with the best deal, based on the data that you have provided to us.</p>
+					<!-- Provide a link to the relevant npower page for the tariff selected. --> 
+					<p><a href="http://www.npower.com/Home/electricity-and-gas/products/" target="_blank">Click here</a> for more information on this product.</p>
+				</div>
+			</section>
+		</article>
+		
+		<!-- Footer providing contact details and also giving credit to the sources of data -->
+		<footer>
+			<div class="sub-section">
+				<p>
+					New Home Energy Calculator<br>
+					&copy; <a href="http://www.flatlinemedia.co.uk" target="_blank">Jonathan Blades</a> 2013
+				</p>
+				<div id="logos">
+					<a href="http://www.npower.co.uk/"><img src="images/logo.png" alt="npower logo"></a>
+					<a href="http://www.zoopla.co.uk/"><img src="http://www.zoopla.co.uk/static/images/mashery/powered-by-zoopla.png" width="111" height="54" title="Property information powered by Zoopla" alt="Property information powered by Zoopla"></a>
+				</div>
+			</div>
+		</footer>
+		
+		<!-- In page scripts --> 
+		<script>	
+			$(document).ready(function(){
+				
+				populateDropDown();
+				
+				// Stop users entering form data prematurely or submitting another form on the page by pressing "return"
+				$(window).keydown(function(event){
+					if(event.keyCode == 13) {
+						event.preventDefault();
+						return false;
+	    			}
+	  			});
+				
+				// Provide the navigation effects for the site, "sliding" between "pages" or different sections of the app.
+				$("#newHome").click(function(e){
+					$("#top").animate({left:"-100%"},"slow");
+					$("#middle").animate({left:"-100%"},"slow");
+					$("#bottom").animate({left:"-100%"},"slow");
+				});
+				
+				$("#owner").click(function(e){
+					$("#top").animate({left:"-300%"},"slow");
+					$("#middle").animate({left:"-300%"},"slow");
+					$("#bottom").animate({left:"-300%"},"slow");
+				});
+						
+				$("#bp1-back").click(function(e){
+					$("#top").animate({left:"-200%"},"slow");
+					$("#middle").animate({left:"-200%"},"slow");
+					$("#bottom").animate({left:"-200%"},"slow");
+				});		
+						
+				$("#bp2-back").click(function(e){
+					$("#top").animate({left:"-100%"},"slow");
+					$("#middle").animate({left:"-100%"},"slow");
+					$("#bottom").animate({left:"-100%"},"slow");
+				});	
+						
+				$("#op1-back").click(function(e){
+					$("#top").animate({left:"-200%"},"slow");
+					$("#middle").animate({left:"-200%"},"slow");
+					$("#bottom").animate({left:"-200%"},"slow");
+				});	
+						
+				$("#op2-back").click(function(e){
+					$("#top").animate({left:"-300%"},"slow");
+					$("#middle").animate({left:"-300%"},"slow");
+					$("#bottom").animate({left:"-300%"},"slow");
+				});	
+				
+				
+				// Change the unit value of the price range, depending on whether the user is buying or renting a property. 
+    			$("[name=listing-status]").click(function(){
+            		if($(this).val() == 'sale'){
+            			$(".price-range").html(' ');
+            		}
+            		else{
+            			$(".price-range").html('/week');
+            		}
+    			});
+
+				
+				// Provide functionality for the Zoopla search button			
+				$("#search-button").click(function(e){
+					e.preventDefault();
+					submitForm();
+				});
+				
+				// Calls for functions for processing the form submission buttons on the "owners" page.			
+				$("#next-button1").click(function(e){
+					e.preventDefault();
+					submitOwnerForm1();
+				});
+				
+				$("#next-button2").click(function(e){
+					e.preventDefault();
+					submitOwnerForm2();					
+				});
+			});
+			
+		</script>
+	</body>
+</html>
