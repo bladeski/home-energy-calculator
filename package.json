@@ -1,0 +1,15 @@
+{
+    "name": "developer-challenge",
+    "version": "0.1.0",
+    "description": "Refactored work of winning submission of npower 2013 Developer Challenge.",
+    "keywords": ["developer", "challenge", "energy"],
+    "repository": "https://github.com/bladeski/developer-challenge.git",
+    "homepage": "https://github.com/bladeski/developer-challenge",
+    "author": "Jonathan Blades <jonathan@flatlinemedia.co.uk>",
+    "dependencies": {
+        "express": "~4.15.2",
+        "knockout": "~3.4.2",
+        "bootstrap": "~3.3.7"
+    },
+    "main": "index"
+}
