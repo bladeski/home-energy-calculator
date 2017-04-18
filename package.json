@@ -7,9 +7,10 @@
     "homepage": "https://github.com/bladeski/developer-challenge",
     "author": "Jonathan Blades <jonathan@flatlinemedia.co.uk>",
     "dependencies": {
-        "express": "~4.15.2",
         "knockout": "~3.4.2",
-        "bootstrap": "~3.3.7"
+        "bootstrap": "~3.3.7",
+        "font-awesome": "~4.7.0"
     },
-    "main": "index"
+    "main": "index",
+    "license": "MIT"
 }
