@@ -15,23 +15,23 @@
 		<link rel="apple-touch-icon" sizes="72x72" href="icon/apple-touch-icon-72x72.png" />
 		<link rel="apple-touch-icon" sizes="114x114" href="icon/apple-touch-icon-114x114.png" />
 		<link rel="apple-touch-icon" sizes="144x144" href="icon/apple-touch-icon-144x144.png" />
-		
+
 		<link href="./style/css_reset.css" rel="stylesheet" type="text/css">
 		<link href="./style/style.css" rel="stylesheet" type="text/css">
-		
+
 		<script src="javascript/dataFunctions.js"></script>
-		
+
 		<!-- Include the latest jQuery API, hosted by Google -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
 		<!-- Include the Google Maps API to allow Zoopla queries to show on a map -->
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true"></script>
 
     	<script>
 			google.maps.visualRefresh = true;
 			var map;
-			
-			// Initialise the Google Maps map 
+
+			// Initialise the Google Maps map
 			function initialize() {
 			  var mapOptions = {
 			    zoom: 12,
@@ -39,13 +39,13 @@
 			  };
 			  map = new google.maps.Map(document.getElementById('map-canvas'),
 			      mapOptions);
-			
+
 			  // Try HTML5 geolocation
 			  if(navigator.geolocation) {
 			    navigator.geolocation.getCurrentPosition(function(position) {
 			      var pos = new google.maps.LatLng(position.coords.latitude,
 			                                       position.coords.longitude);
-			
+
 			      map.setCenter(pos);
 			    }, function() {
 			      handleNoGeolocation(true);
@@ -54,30 +54,30 @@
 			    // Browser doesn't support Geolocation
 			    handleNoGeolocation(false);
 			  }
-				
+
 			}
-			
+
 			function handleNoGeolocation(errorFlag) {
-			
-			// Reset the map to centre in London, should the geolocation be switched off or not working on the device. 
+
+			// Reset the map to centre in London, should the geolocation be switched off or not working on the device.
 			  var options = {
 			    map: map,
 			    position: new google.maps.LatLng(51.5171, 0.1062),
 			    content: content
 			  };
-			
+
 			  var infowindow = new google.maps.InfoWindow(options);
 			  map.setCenter(options.position);
-			} 
-			
+			}
+
 			google.maps.event.addDomListener(window, 'load', initialize);
 
     	</script>
-	
+
 	</head>
 
 	<body>
-		<!-- Top section of the app, displays header, tips for using the app, and result of energy calculation 
+		<!-- Top section of the app, displays header, tips for using the app, and result of energy calculation
 			As with each section of the app, this is split into 5 sections or pages.
 			Only one of these sections is visible at any one time, due to the way the CSS and JavaScript works.-->
 		<article id="top">
@@ -109,22 +109,22 @@
 				</div>
 			</section>
 		</article>
-		
-		<!-- Main section of the app - area to allow users to choose a property for sale/let, or input their own property details --> 	
+
+		<!-- Main section of the app - area to allow users to choose a property for sale/let, or input their own property details -->
 		<article id="middle">
 			<section id="buyer-page2" class="main-section">
 				<div class="sub-section">
 					<p class="results">Gas: £<span class="gas-result">10,000</span>/month</p>
 					<p class="results">Electricity: £<span class="elec-result">10,000</span>/month</p>
-					
+
 				</div>
-				<a id="bp2-back">BACK&gt;</a>				
+				<a id="bp2-back">BACK&gt;</a>
 			</section>
 			<section id="buyer-page1" class="main-section">
 				<div class="sub-section">
 					<form id="buyer-form">
-						<p>Do you plan to: 
-							<input type="radio" name="listing-status" value="sale"/>Buy -or- 
+						<p>Do you plan to:
+							<input type="radio" name="listing-status" value="sale"/>Buy -or-
 							<input type="radio" name="listing-status" value="rent"/>Rent
 						</p>
 						<p>Enter the postcode: <input type="text" name="postcode"/>
@@ -134,13 +134,13 @@
 							£<input type="number" name="max-price" class="number-input"/><span id="max-price" class="price-range"> </span> Maximum
 						</p>
 						<a href="#" id="search-button" class="button">SEARCH</a>
-					</form>	
+					</form>
 				</div>
-				<a id="bp1-back">BACK&gt;</a>				
+				<a id="bp1-back">BACK&gt;</a>
 			</section>
 			<section id="frontPage">
 				<div id="homeImage">
-				
+
 				</div>
 			</section>
 			<section id="owner-page1" class="main-section">
@@ -155,26 +155,26 @@
 							<input type="number" name="elec-usage" value="0" class="number-input"/>kWh (Electricity)
 						</p>
 						<a href="#" id="next-button1" class="button">NEXT</a>
-					</form>	
-				</div>	
-				<a id="op1-back">&lt;BACK</a>			
+					</form>
+				</div>
+				<a id="op1-back">&lt;BACK</a>
 			</section>
 			<section id="owner-page2" class="main-section">
 				<div class="sub-section">
 					<p class="results">Gas: £<span class="gas-result">10,000</span>/month</p>
 					<p class="results">Electricity: £<span class="elec-result">10,000</span>/month</p>
 				</div>
-				<a id="op2-back">&lt;BACK</a>				
+				<a id="op2-back">&lt;BACK</a>
 			</section>
 		</article>
-		
+
 		<!-- Bottom main section of the app - providing both a map for displaying property locations and also further areas for entering property information -->
 		<article id="bottom">
 			<section id="buyer-page2a" class="main-section">
 				<div class="sub-section info">
 					<p>Recommended Tariff: <span class="tariff"></span></p>
 					<p>We would recommend that you choose this npower tariff to provide you with the best deal, based on the data that you have provided to us.</p>
-					<!-- Provide a link to the relevant npower page for the tariff selected. --> 
+					<!-- Provide a link to the relevant npower page for the tariff selected. -->
 					<p><a href="http://www.npower.com/Home/electricity-and-gas/products/">Click here</a> for more information on this product.</p>
 				</div>
 			</section>
@@ -182,7 +182,7 @@
 				<div class="sub-section">
 					<!-- Display the Google Map Canvas -->
 					<div id="map-canvas">
-						
+
 					</div>
 				</div>
 			</section>
@@ -222,22 +222,22 @@
 							Has gas? <input type="checkbox" name="hasGas" value="hasGas" checked/>
 						</p>
 						<p>
-							
+
 						</p>
 						<a href="#" id="next-button2" class="button">NEXT</a>
-					</form>	
+					</form>
 				</div>
 			</section>
 			<section id="owner-page2a" class="main-section">
 				<div class="sub-section info">
 					<p>Recommended Tariff: <span class="tariff"></span></p>
 					<p>We would recommend that you choose this npower tariff to provide you with the best deal, based on the data that you have provided to us.</p>
-					<!-- Provide a link to the relevant npower page for the tariff selected. --> 
+					<!-- Provide a link to the relevant npower page for the tariff selected. -->
 					<p><a href="http://www.npower.com/Home/electricity-and-gas/products/" target="_blank">Click here</a> for more information on this product.</p>
 				</div>
 			</section>
 		</article>
-		
+
 		<!-- Footer providing contact details and also giving credit to the sources of data -->
 		<footer>
 			<div class="sub-section">
@@ -251,13 +251,13 @@
 				</div>
 			</div>
 		</footer>
-		
-		<!-- In page scripts --> 
-		<script>	
+
+		<!-- In page scripts -->
+		<script>
 			$(document).ready(function(){
-				
+
 				populateDropDown();
-				
+
 				// Stop users entering form data prematurely or submitting another form on the page by pressing "return"
 				$(window).keydown(function(event){
 					if(event.keyCode == 13) {
@@ -265,46 +265,46 @@
 						return false;
 	    			}
 	  			});
-				
+
 				// Provide the navigation effects for the site, "sliding" between "pages" or different sections of the app.
 				$("#newHome").click(function(e){
 					$("#top").animate({left:"-100%"},"slow");
 					$("#middle").animate({left:"-100%"},"slow");
 					$("#bottom").animate({left:"-100%"},"slow");
 				});
-				
+
 				$("#owner").click(function(e){
 					$("#top").animate({left:"-300%"},"slow");
 					$("#middle").animate({left:"-300%"},"slow");
 					$("#bottom").animate({left:"-300%"},"slow");
 				});
-						
+
 				$("#bp1-back").click(function(e){
 					$("#top").animate({left:"-200%"},"slow");
 					$("#middle").animate({left:"-200%"},"slow");
 					$("#bottom").animate({left:"-200%"},"slow");
-				});		
-						
+				});
+
 				$("#bp2-back").click(function(e){
 					$("#top").animate({left:"-100%"},"slow");
 					$("#middle").animate({left:"-100%"},"slow");
 					$("#bottom").animate({left:"-100%"},"slow");
-				});	
-						
+				});
+
 				$("#op1-back").click(function(e){
 					$("#top").animate({left:"-200%"},"slow");
 					$("#middle").animate({left:"-200%"},"slow");
 					$("#bottom").animate({left:"-200%"},"slow");
-				});	
-						
+				});
+
 				$("#op2-back").click(function(e){
 					$("#top").animate({left:"-300%"},"slow");
 					$("#middle").animate({left:"-300%"},"slow");
 					$("#bottom").animate({left:"-300%"},"slow");
-				});	
-				
-				
-				// Change the unit value of the price range, depending on whether the user is buying or renting a property. 
+				});
+
+
+				// Change the unit value of the price range, depending on whether the user is buying or renting a property.
     			$("[name=listing-status]").click(function(){
             		if($(this).val() == 'sale'){
             			$(".price-range").html(' ');
@@ -314,25 +314,25 @@
             		}
     			});
 
-				
-				// Provide functionality for the Zoopla search button			
+
+				// Provide functionality for the Zoopla search button
 				$("#search-button").click(function(e){
 					e.preventDefault();
 					submitForm();
 				});
-				
-				// Calls for functions for processing the form submission buttons on the "owners" page.			
+
+				// Calls for functions for processing the form submission buttons on the "owners" page.
 				$("#next-button1").click(function(e){
 					e.preventDefault();
 					submitOwnerForm1();
 				});
-				
+
 				$("#next-button2").click(function(e){
 					e.preventDefault();
-					submitOwnerForm2();					
+					submitOwnerForm2();
 				});
 			});
-			
+
 		</script>
 	</body>
 </html>
