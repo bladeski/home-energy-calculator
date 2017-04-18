@@ -1,8 +1,7 @@
 ## Synopsis
 
-This is the winning submission of the 2013 npower Developer Challenge.
-The code is in the process of being refactored to tidy up and update the code, as well as making it run on its own node.js service.
-<!---
+Blah blah blah
+
 ## Code Example
 
 Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
@@ -26,7 +25,6 @@ Describe and show how to run the tests with code examples.
 ## Contributors
 
 Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
---->
 
 ## License
 
