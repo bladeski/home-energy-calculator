@@ -1,5 +1,64 @@
 extends layout
 
+block headerScripts
+    script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true')
+
 block content
-  h1= title
-  p Welcome to the #{title}
+
+    div(id='controls' class='container-fluid')
+
+        div(class='row')
+            div(class='col-md-12')
+                h1= title
+                    small= subtitle
+
+        nav(class='navbar navbar-default')
+            div(class='container-fluid')
+                div(class='navbar-header')
+                    span(class='navbar-brand fa fa-calculator fa-lg')
+                div(class='collapse navbar-collapse' id='bs-example-navbar-collapse-1')
+                    ul(class='nav navbar-nav')
+                        li(role='presentation' data-bind='css: {active: isOwner}')
+                            a(class='btn btn-link' data-bind='click: setOwner') Owner
+                        li(role='presentation' data-bind='css: {active: !isOwner()}')
+                            a(class='btn btn-link' data-bind='click: setBuyer') Buyer
+
+
+        div(class='row show-grid')
+            div(class='col-md-6')
+                div(class='panel panel-default')
+                    div(class='panel-heading')
+                        h2(data-bind='visible: isOwner') Owner Form
+                        h2(data-bind='visible: !isOwner()') Buyer Form
+                    div(class='panel-body')
+                        div(data-bind='visible: isOwner')
+                            form(id='owner-form')
+                                div(class='form-group')
+                                    h3 Current property
+                                    label(for='regionList') Select the region:
+                                    select(id='regionList' class='form-control')
+                                div(class='form-group')
+                                    label(for='currentGasUsage') If you know your current gas usage, enter it here:
+                                    div(class='input-group')
+                                        div(class='input-group-addon')
+                                            span(class='fa fa-fire fa-lg')
+                                        input(id='currentGasUsage' type='number' class='form-control' data-bind='value: currentGasUsage')
+                                        div(class='input-group-addon') kWh
+                                div(class='form-group')
+                                    label(for='currentGasUsage') If you know your current electricity usage, enter it here:
+                                    div(class='input-group')
+                                        div(class='input-group-addon')
+                                            span(class='fa fa-bolt fa-lg')
+                                        input(id='currentElecUsage' type='number' class='form-control' data-bind='value: currentElecUsage')
+                                        div(class='input-group-addon') kWh
+
+                        div(data-bind='visible: !isOwner()')
+                            div(id='map-canvas')
+
+            div(class='col-md-6')
+                div(class='panel panel-default')
+                    div(class='panel-body')
+                        h2(data-bind='text: resultHeaderText')
+                        span(data-bind='text: resultBodyText')
+block scripts
+    script(data-main='/scripts/main' src='/lib/requirejs/require.js')

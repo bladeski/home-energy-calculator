@@ -2,7 +2,14 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/res/bootstrap/bootstrap.min.css')
+    link(rel='stylesheet', href='/lib/bootstrap/bootstrap.min.css')
     link(rel='stylesheet', href='/styles/style.css')
+    link(rel='stylesheet', href='/lib/font-awesome/css/font-awesome.min.css')
+
+    block headerScripts
+    
   body
     block content
+
+    // Scripts in here
+    block scripts

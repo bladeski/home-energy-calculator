@@ -1,8 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var knockout = require('knockout');
-
-var options = {
+var express = require('express'),
+    router = express.Router(),
+    knockout = require('knockout'),
+    options = {
         root: __dirname + '/../public',
         dotfiles: 'deny',
         headers: {

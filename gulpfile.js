@@ -1,8 +1,15 @@
 var gulp = require('gulp'),
+    run = require('gulp-run'),
+    del = require('del'),
+    install = require('gulp-install'),
     nodeModulePath = './node_modules/',
     libPath = './src/public/lib/';
 
-gulp.task('build', function () {
+gulp.task('clean', function () {
+    return del(['src/public/lib/*']);
+});
+
+gulp.task('build', ['clean'], function () {
     var dependencies = [{
         name: 'Knockout.js',
         dir: 'knockout',
@@ -19,6 +26,14 @@ gulp.task('build', function () {
         name: 'Font Awesome Fonts',
         dir: 'font-awesome/fonts',
         paths: ['font-awesome/fonts/*']
+    }, {
+        name: 'Require JS',
+        dir: 'requirejs',
+        paths: ['requirejs/require.js']
+    }, {
+        name: 'jQuery',
+        dir: 'jquery',
+        paths: ['jquery/dist/jquery.min.js']
     }];
 
     dependencies.forEach(function (dep) {
@@ -26,4 +41,8 @@ gulp.task('build', function () {
             return gulp.src(nodeModulePath + path).pipe(gulp.dest(libPath + dep.dir));
         });
     });
+});
+
+gulp.task('run', ['build'], function () {
+    return run('set DEBUG=app:* & npm start').exec();
 });

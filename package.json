@@ -2,7 +2,11 @@
     "name": "developer-challenge",
     "version": "0.1.0",
     "description": "Refactored work of winning submission of npower 2013 Developer Challenge.",
-    "keywords": ["developer", "challenge", "energy"],
+    "keywords": [
+        "developer",
+        "challenge",
+        "energy"
+    ],
     "repository": "https://github.com/bladeski/developer-challenge.git",
     "homepage": "https://github.com/bladeski/developer-challenge",
     "author": "Jonathan Blades <jonathan@flatlinemedia.co.uk>",
@@ -11,9 +15,14 @@
     },
     "dependencies": {
         "gulp": "^3.9.1",
+        "gulp-install": "^1.1.0",
+        "gulp-run": "^1.7.1",
+        "del": "^2.2.2",
         "express": "^4.15.2",
+        "jquery": "^3.2.1",
         "knockout": "^3.4.2",
         "bootstrap": "^3.3.7",
+        "requirejs": "^2.3.3",
         "body-parser": "^1.17.1",
         "cookie-parser": "^1.4.3",
         "debug": "^2.6.3",
@@ -24,5 +33,9 @@
         "font-awesome": "^4.7.0"
     },
     "main": "index",
-    "license": "MIT"
+    "license": "MIT",
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "gulp-install": "^1.1.0"
+    }
 }

@@ -1,0 +1,1136 @@
+[
+   {
+      "regionCode": "10",
+      "regionName": "Eastern",
+      "tariffs": [
+         {
+            "name": "tariff1",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.1535",
+                  "unitRate": "0.1314"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2235",
+                  "unitRate": "0.04916"
+               }
+            ]
+         },
+         {
+            "name": "tariff2",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.167315",
+                  "unitRate": "0.11826"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.243615",
+                  "unitRate": "0.044244"
+               }
+            ]
+         },
+         {
+            "name": "tariff3",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.200778",
+                  "unitRate": "0.094608"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.146169",
+                  "unitRate": "0.066366"
+               }
+            ]
+         },
+         {
+            "name": "tariff4",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.4736",
+                  "unitRate": "0.23652"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.3576",
+                  "unitRate": "0.471936"
+               }
+            ]
+         },
+         {
+            "name": "tariff5",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.5043",
+                  "unitRate": "0.17082"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2682",
+                  "unitRate": "0.486684"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "regionCode": "11",
+      "regionName": "East Midlands",
+      "tariffs": [
+         {
+            "name": "tariff1",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.156",
+                  "unitRate": "0.1299"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2235",
+                  "unitRate": "0.04916"
+               }
+            ]
+         },
+         {
+            "name": "tariff2",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.17004",
+                  "unitRate": "0.11691"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.243615",
+                  "unitRate": "0.044244"
+               }
+            ]
+         },
+         {
+            "name": "tariff3",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.204048",
+                  "unitRate": "0.093528"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.146169",
+                  "unitRate": "0.066366"
+               }
+            ]
+         },
+         {
+            "name": "tariff4",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.4976",
+                  "unitRate": "0.23382"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.3576",
+                  "unitRate": "0.471936"
+               }
+            ]
+         },
+         {
+            "name": "tariff5",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.5288",
+                  "unitRate": "0.16887"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2682",
+                  "unitRate": "0.486684"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "regionCode": "12",
+      "regionName": "London",
+      "tariffs": [
+         {
+            "name": "tariff1",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.1357",
+                  "unitRate": "0.1356"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2235",
+                  "unitRate": "0.04916"
+               }
+            ]
+         },
+         {
+            "name": "tariff2",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.147913",
+                  "unitRate": "0.12204"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.243615",
+                  "unitRate": "0.044244"
+               }
+            ]
+         },
+         {
+            "name": "tariff3",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.1774956",
+                  "unitRate": "0.097632"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.146169",
+                  "unitRate": "0.066366"
+               }
+            ]
+         },
+         {
+            "name": "tariff4",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.30272",
+                  "unitRate": "0.24408"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.3576",
+                  "unitRate": "0.471936"
+               }
+            ]
+         },
+         {
+            "name": "tariff5",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.32986",
+                  "unitRate": "0.17628"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2682",
+                  "unitRate": "0.486684"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "regionCode": "13",
+      "regionName": "North Wales & Merseyside",
+      "tariffs": [
+         {
+            "name": "tariff1",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.1357",
+                  "unitRate": "0.1389"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2235",
+                  "unitRate": "0.04916"
+               }
+            ]
+         },
+         {
+            "name": "tariff2",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.147913",
+                  "unitRate": "0.12501"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.243615",
+                  "unitRate": "0.044244"
+               }
+            ]
+         },
+         {
+            "name": "tariff3",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.1774956",
+                  "unitRate": "0.100008"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.146169",
+                  "unitRate": "0.066366"
+               }
+            ]
+         },
+         {
+            "name": "tariff4",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.30272",
+                  "unitRate": "0.25002"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.3576",
+                  "unitRate": "0.471936"
+               }
+            ]
+         },
+         {
+            "name": "tariff5",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.32986",
+                  "unitRate": "0.18057"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2682",
+                  "unitRate": "0.486684"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "regionCode": "14",
+      "regionName": "West Midlands",
+      "tariffs": [
+         {
+            "name": "tariff1",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.1575",
+                  "unitRate": "0.1311"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2235",
+                  "unitRate": "0.04916"
+               }
+            ]
+         },
+         {
+            "name": "tariff2",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.171675",
+                  "unitRate": "0.11799"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.243615",
+                  "unitRate": "0.044244"
+               }
+            ]
+         },
+         {
+            "name": "tariff3",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.20601",
+                  "unitRate": "0.094392"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.146169",
+                  "unitRate": "0.066366"
+               }
+            ]
+         },
+         {
+            "name": "tariff4",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.512",
+                  "unitRate": "0.23598"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.3576",
+                  "unitRate": "0.471936"
+               }
+            ]
+         },
+         {
+            "name": "tariff5",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.5435",
+                  "unitRate": "0.17043"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2682",
+                  "unitRate": "0.486684"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "regionCode": "15",
+      "regionName": "North East",
+      "tariffs": [
+         {
+            "name": "tariff1",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.1776",
+                  "unitRate": "0.1334"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2235",
+                  "unitRate": "0.04916"
+               }
+            ]
+         },
+         {
+            "name": "tariff2",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.193584",
+                  "unitRate": "0.12006"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.243615",
+                  "unitRate": "0.044244"
+               }
+            ]
+         },
+         {
+            "name": "tariff3",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.2323008",
+                  "unitRate": "0.096048"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.146169",
+                  "unitRate": "0.066366"
+               }
+            ]
+         },
+         {
+            "name": "tariff4",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.70496",
+                  "unitRate": "0.24012"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.3576",
+                  "unitRate": "0.471936"
+               }
+            ]
+         },
+         {
+            "name": "tariff5",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.74048",
+                  "unitRate": "0.17342"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2682",
+                  "unitRate": "0.486684"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "regionCode": "16",
+      "regionName": "North West",
+      "tariffs": [
+         {
+            "name": "tariff1",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.147",
+                  "unitRate": "0.131"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2235",
+                  "unitRate": "0.04916"
+               }
+            ]
+         },
+         {
+            "name": "tariff2",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.16023",
+                  "unitRate": "0.1179"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.243615",
+                  "unitRate": "0.044244"
+               }
+            ]
+         },
+         {
+            "name": "tariff3",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.192276",
+                  "unitRate": "0.09432"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.146169",
+                  "unitRate": "0.066366"
+               }
+            ]
+         },
+         {
+            "name": "tariff4",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.4112",
+                  "unitRate": "0.2358"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.3576",
+                  "unitRate": "0.471936"
+               }
+            ]
+         },
+         {
+            "name": "tariff5",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.4406",
+                  "unitRate": "0.1703"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2682",
+                  "unitRate": "0.486684"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "regionCode": "17",
+      "regionName": "North Scotland",
+      "tariffs": [
+         {
+            "name": "tariff1",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.1466",
+                  "unitRate": "0.1429"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2235",
+                  "unitRate": "0.04916"
+               }
+            ]
+         },
+         {
+            "name": "tariff2",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.159794",
+                  "unitRate": "0.12861"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.243615",
+                  "unitRate": "0.044244"
+               }
+            ]
+         },
+         {
+            "name": "tariff3",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.1917528",
+                  "unitRate": "0.102888"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.146169",
+                  "unitRate": "0.066366"
+               }
+            ]
+         },
+         {
+            "name": "tariff4",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.40736",
+                  "unitRate": "0.25722"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.3576",
+                  "unitRate": "0.471936"
+               }
+            ]
+         },
+         {
+            "name": "tariff5",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.43668",
+                  "unitRate": "0.18577"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2682",
+                  "unitRate": "0.486684"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "regionCode": "18",
+      "regionName": "South Scotland",
+      "tariffs": [
+         {
+            "name": "tariff1",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.1678",
+                  "unitRate": "0.1379"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2235",
+                  "unitRate": "0.04916"
+               }
+            ]
+         },
+         {
+            "name": "tariff2",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.182902",
+                  "unitRate": "0.12411"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.243615",
+                  "unitRate": "0.044244"
+               }
+            ]
+         },
+         {
+            "name": "tariff3",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.2194824",
+                  "unitRate": "0.099288"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.146169",
+                  "unitRate": "0.066366"
+               }
+            ]
+         },
+         {
+            "name": "tariff4",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.61088",
+                  "unitRate": "0.24822"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.3576",
+                  "unitRate": "0.471936"
+               }
+            ]
+         },
+         {
+            "name": "tariff5",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.64444",
+                  "unitRate": "0.17927"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2682",
+                  "unitRate": "0.486684"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "regionCode": "19",
+      "regionName": "South East",
+      "tariffs": [
+         {
+            "name": "tariff1",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.1619",
+                  "unitRate": "0.1299"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2235",
+                  "unitRate": "0.04916"
+               }
+            ]
+         },
+         {
+            "name": "tariff2",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.176471",
+                  "unitRate": "0.11691"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.243615",
+                  "unitRate": "0.044244"
+               }
+            ]
+         },
+         {
+            "name": "tariff3",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.2117652",
+                  "unitRate": "0.093528"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.146169",
+                  "unitRate": "0.066366"
+               }
+            ]
+         },
+         {
+            "name": "tariff4",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.55424",
+                  "unitRate": "0.23382"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.3576",
+                  "unitRate": "0.471936"
+               }
+            ]
+         },
+         {
+            "name": "tariff5",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.58662",
+                  "unitRate": "0.16887"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2682",
+                  "unitRate": "0.486684"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "regionCode": "20",
+      "regionName": "Southern",
+      "tariffs": [
+         {
+            "name": "tariff1",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.1531",
+                  "unitRate": "0.1323"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2235",
+                  "unitRate": "0.04916"
+               }
+            ]
+         },
+         {
+            "name": "tariff2",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.166879",
+                  "unitRate": "0.11907"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.243615",
+                  "unitRate": "0.044244"
+               }
+            ]
+         },
+         {
+            "name": "tariff3",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.2002548",
+                  "unitRate": "0.095256"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.146169",
+                  "unitRate": "0.066366"
+               }
+            ]
+         },
+         {
+            "name": "tariff4",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.46976",
+                  "unitRate": "0.23814"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.3576",
+                  "unitRate": "0.471936"
+               }
+            ]
+         },
+         {
+            "name": "tariff5",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.50038",
+                  "unitRate": "0.17199"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2682",
+                  "unitRate": "0.486684"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "regionCode": "21",
+      "regionName": "South Wales",
+      "tariffs": [
+         {
+            "name": "tariff1",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.0899",
+                  "unitRate": "0.1413"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2235",
+                  "unitRate": "0.04916"
+               }
+            ]
+         },
+         {
+            "name": "tariff2",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.097991",
+                  "unitRate": "0.12717"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.243615",
+                  "unitRate": "0.044244"
+               }
+            ]
+         },
+         {
+            "name": "tariff3",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.1175892",
+                  "unitRate": "0.101736"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.146169",
+                  "unitRate": "0.066366"
+               }
+            ]
+         },
+         {
+            "name": "tariff4",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.86304",
+                  "unitRate": "0.25434"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.3576",
+                  "unitRate": "0.471936"
+               }
+            ]
+         },
+         {
+            "name": "tariff5",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.88102",
+                  "unitRate": "0.18369"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2682",
+                  "unitRate": "0.486684"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "regionCode": "22",
+      "regionName": "South West",
+      "tariffs": [
+         {
+            "name": "tariff1",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.091",
+                  "unitRate": "0.147"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2235",
+                  "unitRate": "0.04916"
+               }
+            ]
+         },
+         {
+            "name": "tariff2",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.09919",
+                  "unitRate": "0.1323"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.243615",
+                  "unitRate": "0.044244"
+               }
+            ]
+         },
+         {
+            "name": "tariff3",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.119028",
+                  "unitRate": "0.10584"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.146169",
+                  "unitRate": "0.066366"
+               }
+            ]
+         },
+         {
+            "name": "tariff4",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.8736",
+                  "unitRate": "0.2646"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.3576",
+                  "unitRate": "0.471936"
+               }
+            ]
+         },
+         {
+            "name": "tariff5",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.8918",
+                  "unitRate": "0.1911"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2682",
+                  "unitRate": "0.486684"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "regionCode": "23",
+      "regionName": "Yorkshire",
+      "tariffs": [
+         {
+            "name": "tariff1",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.169",
+                  "unitRate": "0.1297"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2235",
+                  "unitRate": "0.04916"
+               }
+            ]
+         },
+         {
+            "name": "tariff2",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.18421",
+                  "unitRate": "0.11673"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.243615",
+                  "unitRate": "0.044244"
+               }
+            ]
+         },
+         {
+            "name": "tariff3",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "0.221052",
+                  "unitRate": "0.093384"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.146169",
+                  "unitRate": "0.066366"
+               }
+            ]
+         },
+         {
+            "name": "tariff4",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.6224",
+                  "unitRate": "0.23346"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.3576",
+                  "unitRate": "0.471936"
+               }
+            ]
+         },
+         {
+            "name": "tariff5",
+            "fuel": [
+               {
+                  "fuelType": "E",
+                  "standingCharge": "1.6562",
+                  "unitRate": "0.16861"
+               },
+               {
+                  "fuelType": "G",
+                  "standingCharge": "0.2682",
+                  "unitRate": "0.486684"
+               }
+            ]
+         }
+      ]
+   }
+]
