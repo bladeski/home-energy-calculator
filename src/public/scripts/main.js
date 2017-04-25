@@ -5,15 +5,19 @@
         paths: {
             jquery: '/lib/jquery/jquery.min',
             knockout: '/lib/knockout/knockout-latest',
-            tariffHelpers: '/scripts/tariffHelpers'
+            regionHelpers: '/scripts/regionHelpers',
+            tariffHelpers: '/scripts/tariffHelpers',
+            consumerDataHelpers: '/scripts/consumerDataHelpers'
         }
     });
 
     requirejs([
         'jquery',
         'knockout',
-        'tariffHelpers'
-    ], function($, ko, tariffHelpers) {
+        'regionHelpers',
+        'tariffHelpers',
+        'consumerDataHelpers'
+    ], function($, ko, regionHelpers, tariffHelpers, consumerDataHelpers) {
 
         google.maps.visualRefresh = true;
         var map,
@@ -60,24 +64,78 @@
         }
 
         function updateCurrentUsage() {
-            tariffHelpers.getBestTariff(
-                viewModel.currentGasUsage(),
-                viewModel.currentElecUsage(),
-                viewModel.regionCode(),
-                function (tariff) {
-                    viewModel.bestTariff(tariff);
-            });
+            var consumerData,
+                estimatedConsumption;
+
+            if (viewModel.ownerKnowsUsage() === '1') {
+                if (viewModel.currentGasUsage() || viewModel.currentElecUsage()) {
+                    tariffHelpers.getBestTariff(
+                        viewModel.currentGasUsage(),
+                        viewModel.currentElecUsage(),
+                        viewModel.regionCode(),
+                        function (tariff) {
+                            viewModel.bestTariff(tariff);
+                    });
+                }
+            } else {
+                consumerDataHelpers.getConsumerData(function (consumerData) {
+                    consumerDataHelpers.monthlyAverageConsumption(viewModel, consumerData, function (estimatedConsumption) {
+                        if (estimatedConsumption.count > 0) {
+                            tariffHelpers.getBestTariff(
+                                estimatedConsumption.gas,
+                                estimatedConsumption.elec,
+                                viewModel.regionCode(),
+                                function (tariff) {
+                                    viewModel.bestTariff(tariff);
+                            });
+                        } else {
+                            viewModel.resultHeaderText('Unfortunately there were no results matching your property.');
+                            viewModel.resultBodyText('Please change your options or enter your current energy consumption.')
+                        }
+                        viewModel.results(estimatedConsumption.count);
+                    });
+                });
+
+            }
         }
 
         var viewModel = {
             isOwner: ko.observable(true),
             currentGasUsage: ko.observable(0),
             currentElecUsage: ko.observable(0),
-            tariffs: tariffHelpers.getTariffs(),
+            regionCode: ko.observable(),
+            ownerKnowsUsage: ko.observable('1'),
+            propertyType: ko.observable(),
+            numberOfBedrooms: ko.observable(),
+            numberOfBathrooms: ko.observable(),
+            hasCentralHeating: ko.observable(),
+            hasLoftInsulation: ko.observable(),
+            wallType: ko.observable(),
+            propertyAge: ko.observable(),
+            hasGas: ko.observable('1'),
             bestTariff: ko.observable(),
+            results: ko.observable(),
+            regions: ko.observableArray(),
+            tariffs: tariffHelpers.getTariffs(),
             resultHeaderText: ko.observable('Please fill in the form to help us find the best tariff for you.'),
             resultBodyText: ko.observable(''),
-            regionCode: ko.observable()
+            propertyTypes: [
+                'Detached',
+                'Semi-detached',
+                'Terraced',
+                'Bungalow',
+                'Flat',
+                'Other'
+            ],
+            numberOfBedroomsOptions: ['1 to 2', '3', '4 +'],
+            propertyAges: [
+                'pre 1870',
+                '1871 - 1919',
+                '1920 - 1945',
+                '1946 - 1954',
+                '1955 - 1979',
+                'post 1980'
+            ]
         };
 
         viewModel.setOwner = function () {
@@ -89,11 +147,43 @@
             mapInitialized || initialize();
         };
 
+        viewModel.setOptionDisable = function(option, item) {
+            ko.applyBindingsToNode(option, {disable: item.disable}, item);
+        };
+
+        viewModel.regionCode.subscribe(function () {
+            updateCurrentUsage();
+        });
+
         viewModel.currentGasUsage.subscribe(function () {
             updateCurrentUsage();
         });
 
         viewModel.currentElecUsage.subscribe(function () {
+            updateCurrentUsage();
+        });
+
+        viewModel.regionCode.subscribe(function () {
+            updateCurrentUsage();
+        });
+
+        viewModel.ownerKnowsUsage.subscribe(function () {
+            updateCurrentUsage();
+        });
+
+        viewModel.propertyType.subscribe(function () {
+            updateCurrentUsage();
+        });
+
+        viewModel.numberOfBedrooms.subscribe(function () {
+            updateCurrentUsage();
+        });
+
+        viewModel.propertyAge.subscribe(function () {
+            updateCurrentUsage();
+        });
+
+        viewModel.hasGas.subscribe(function () {
             updateCurrentUsage();
         });
 
@@ -103,6 +193,10 @@
 
             viewModel.resultHeaderText(headerText);
             viewModel.resultBodyText(bodyText);
+        });
+
+        regionHelpers.getRegions(function (data) {
+            viewModel.regions(data);
         });
 
         ko.applyBindings(viewModel);

@@ -1,0 +1,418 @@
+[
+   {
+      "Name": "Bedfordshire",
+      "Code": "10"
+   },
+   {
+      "Name": "Cambridgeshire",
+      "Code": "10"
+   },
+   {
+      "Name": "Essex",
+      "Code": "10"
+   },
+   {
+      "Name": "Hertfordshire",
+      "Code": "10"
+   },
+   {
+      "Name": "Huntingdon and Peterborough",
+      "Code": "10"
+   },
+   {
+      "Name": "Huntingdonshire",
+      "Code": "10"
+   },
+   {
+      "Name": "Norfolk",
+      "Code": "10"
+   },
+   {
+      "Name": "Suffolk",
+      "Code": "10"
+   },
+   {
+      "Name": "Derbyshire",
+      "Code": "11"
+   },
+   {
+      "Name": "Leicestershire",
+      "Code": "11"
+   },
+   {
+      "Name": "Lincolnshire",
+      "Code": "11"
+   },
+   {
+      "Name": "Northamptonshire",
+      "Code": "11"
+   },
+   {
+      "Name": "Nottinghamshire",
+      "Code": "11"
+   },
+   {
+      "Name": "Rutland",
+      "Code": "11"
+   },
+   {
+      "Name": "Greater London",
+      "Code": "12"
+   },
+   {
+      "Name": "London",
+      "Code": "12"
+   },
+   {
+      "Name": "Middlesex",
+      "Code": "12"
+   },
+   {
+      "Name": "Merseyside",
+      "Code": "13"
+   },
+   {
+      "Name": "Anglesey",
+      "Code": "13"
+   },
+   {
+      "Name": "Caernarfonshire",
+      "Code": "13"
+   },
+   {
+      "Name": "Clwyd",
+      "Code": "13"
+   },
+   {
+      "Name": "Denbighshire",
+      "Code": "13"
+   },
+   {
+      "Name": "Flintshire",
+      "Code": "13"
+   },
+   {
+      "Name": "Gwynedd",
+      "Code": "13"
+   },
+   {
+      "Name": "Merionethshire",
+      "Code": "13"
+   },
+   {
+      "Name": "Montgomeryshire",
+      "Code": "13"
+   },
+   {
+      "Name": "Hereford and Worcester",
+      "Code": "14"
+   },
+   {
+      "Name": "Herefordshire",
+      "Code": "14"
+   },
+   {
+      "Name": "Shropshire",
+      "Code": "14"
+   },
+   {
+      "Name": "Staffordshire",
+      "Code": "14"
+   },
+   {
+      "Name": "Warwickshire",
+      "Code": "14"
+   },
+   {
+      "Name": "West Midlands",
+      "Code": "14"
+   },
+   {
+      "Name": "Worcestershire",
+      "Code": "14"
+   },
+   {
+      "Name": "Cleveland",
+      "Code": "15"
+   },
+   {
+      "Name": "County Durham",
+      "Code": "15"
+   },
+   {
+      "Name": "Humberside",
+      "Code": "15"
+   },
+   {
+      "Name": "Northumberland",
+      "Code": "15"
+   },
+   {
+      "Name": "Tyne and Wear",
+      "Code": "15"
+   },
+   {
+      "Name": "Cheshire",
+      "Code": "16"
+   },
+   {
+      "Name": "Cumberland",
+      "Code": "16"
+   },
+   {
+      "Name": "Cumbria",
+      "Code": "16"
+   },
+   {
+      "Name": "Greater Manchester",
+      "Code": "16"
+   },
+   {
+      "Name": "Lancashire",
+      "Code": "16"
+   },
+   {
+      "Name": "Westmorland",
+      "Code": "16"
+   },
+   {
+      "Name": "Aberdeenshire",
+      "Code": "17"
+   },
+   {
+      "Name": "Angus",
+      "Code": "17"
+   },
+   {
+      "Name": "Argyll",
+      "Code": "17"
+   },
+   {
+      "Name": "Banffshire",
+      "Code": "17"
+   },
+   {
+      "Name": "Buteshire",
+      "Code": "17"
+   },
+   {
+      "Name": "Caithness",
+      "Code": "17"
+   },
+   {
+      "Name": "Clackmannanshire",
+      "Code": "17"
+   },
+   {
+      "Name": "Cromartyshire",
+      "Code": "17"
+   },
+   {
+      "Name": "Fife",
+      "Code": "17"
+   },
+   {
+      "Name": "Glasgow",
+      "Code": "18"
+   },
+   {
+      "Name": "Inverness-shire",
+      "Code": "17"
+   },
+   {
+      "Name": "Morayshire",
+      "Code": "17"
+   },
+   {
+      "Name": "Nairnshire",
+      "Code": "17"
+   },
+   {
+      "Name": "Orkney",
+      "Code": "17"
+   },
+   {
+      "Name": "Ross-shire",
+      "Code": "17"
+   },
+   {
+      "Name": "Selkirkshire",
+      "Code": "17"
+   },
+   {
+      "Name": "Shetland",
+      "Code": "17"
+   },
+   {
+      "Name": "Stirlingshire",
+      "Code": "17"
+   },
+   {
+      "Name": "Sutherland",
+      "Code": "17"
+   },
+   {
+      "Name": "Ayrshire",
+      "Code": "18"
+   },
+   {
+      "Name": "Berwickshire",
+      "Code": "18"
+   },
+   {
+      "Name": "Dumfriesshire",
+      "Code": "18"
+   },
+   {
+      "Name": "Dunbartonshire",
+      "Code": "18"
+   },
+   {
+      "Name": "East Lothian",
+      "Code": "18"
+   },
+   {
+      "Name": "Kinross-shire",
+      "Code": "18"
+   },
+   {
+      "Name": "Kirkcudbrightshire",
+      "Code": "18"
+   },
+   {
+      "Name": "Lanarkshire",
+      "Code": "18"
+   },
+   {
+      "Name": "Midlothian",
+      "Code": "18"
+   },
+   {
+      "Name": "Peeblesshire",
+      "Code": "18"
+   },
+   {
+      "Name": "Perthshire",
+      "Code": "18"
+   },
+   {
+      "Name": "Renfrewshire",
+      "Code": "18"
+   },
+   {
+      "Name": "Roxburghshire",
+      "Code": "18"
+   },
+   {
+      "Name": "West Lothian",
+      "Code": "18"
+   },
+   {
+      "Name": "Wigtownshire",
+      "Code": "18"
+   },
+   {
+      "Name": "Berkshire",
+      "Code": "19"
+   },
+   {
+      "Name": "Buckinghamshire",
+      "Code": "19"
+   },
+   {
+      "Name": "Hampshire",
+      "Code": "19"
+   },
+   {
+      "Name": "Isle of Wight",
+      "Code": "19"
+   },
+   {
+      "Name": "Kent",
+      "Code": "19"
+   },
+   {
+      "Name": "Oxfordshire",
+      "Code": "19"
+   },
+   {
+      "Name": "Surrey",
+      "Code": "19"
+   },
+   {
+      "Name": "Sussex",
+      "Code": "19"
+   },
+   {
+      "Name": "Brecknockshire",
+      "Code": "21"
+   },
+   {
+      "Name": "Cardiganshire",
+      "Code": "21"
+   },
+   {
+      "Name": "Carmarthenshire",
+      "Code": "21"
+   },
+   {
+      "Name": "Dyfed",
+      "Code": "21"
+   },
+   {
+      "Name": "Glamorgan",
+      "Code": "21"
+   },
+   {
+      "Name": "Gwent",
+      "Code": "21"
+   },
+   {
+      "Name": "Monmouthshire",
+      "Code": "21"
+   },
+   {
+      "Name": "Pembrokeshire",
+      "Code": "21"
+   },
+   {
+      "Name": "Powys",
+      "Code": "21"
+   },
+   {
+      "Name": "Radnorshire",
+      "Code": "21"
+   },
+   {
+      "Name": "Avon",
+      "Code": "22"
+   },
+   {
+      "Name": "Cornwall",
+      "Code": "22"
+   },
+   {
+      "Name": "Devon",
+      "Code": "22"
+   },
+   {
+      "Name": "Dorset",
+      "Code": "22"
+   },
+   {
+      "Name": "Gloucestershire",
+      "Code": "22"
+   },
+   {
+      "Name": "Somerset",
+      "Code": "22"
+   },
+   {
+      "Name": "Wiltshire",
+      "Code": "22"
+   },
+   {
+      "Name": "Yorkshire",
+      "Code": "23"
+   }
+]

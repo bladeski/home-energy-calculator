@@ -2,8 +2,6 @@ define([], function () {
     var tariffHelpers = {};
 
     tariffHelpers.getTariffs = function (callback) {
-        var tariffs = [];
-
         $.ajax({
             url: '/data/tariffs.json'
         }).done(function(data) {

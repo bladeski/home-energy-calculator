@@ -5,7 +5,7 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     lessMiddleware = require('less-middleware'),
-    index = require('./routes/index')
+    index = require('./routes/index'),
 
     app = express();
 

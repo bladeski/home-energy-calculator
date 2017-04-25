@@ -1,3 +1,6 @@
+@primary-component-bg: #ccefff;
+@active-component-bg: #009dff;
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -11,6 +14,38 @@ a {
     height: 400px;
 }
 
+nav {
+    &.navbar.navbar-main {
+        background-color: @primary-component-bg;
+        // border-color: #abeeab;
+
+        span.navbar-brand {
+            color: @active-component-bg;
+        }
+
+        ul.navbar-nav {
+            >li.active {
+                a {
+                    background-color: @active-component-bg;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+div.input-group-addon {
+    background-color: @primary-component-bg;
+}
+
 .navbar-brand.fa-lg {
     font-size: 2em;
+}
+
+.gas-icon {
+    color: #7cdcff;
+}
+
+.elec-icon {
+    color: #ff9900;
 }
