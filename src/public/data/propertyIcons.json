@@ -1,0 +1,66 @@
+[
+   {
+      "Type": "Terraced",
+      "IconName": "terrace.png"
+  },
+   {
+      "Type": "End of terrace",
+      "IconName": "terrace.png"
+  },
+   {
+      "Type": "Semi-detached",
+      "IconName": "semi-detached.png"
+  },
+   {
+      "Type": "Detached",
+      "IconName": "house-icon.png"
+  },
+   {
+      "Type": "Mews house",
+      "IconName": "house-icon.png"
+  },
+   {
+      "Type": "Flat",
+      "IconName": "flat.png"
+  },
+   {
+      "Type": "Maisonette",
+      "IconName": "house-icon.png"
+  },
+   {
+      "Type": "Bungalow",
+      "IconName": "bungalow.png"
+  },
+   {
+      "Type": "Town house",
+      "IconName": "house-icon.png"
+  },
+   {
+      "Type": "Cottage",
+      "IconName": "bungalow.png"
+  },
+   {
+      "Type": "Farm/Barn",
+      "IconName": "farm.png"
+  },
+   {
+      "Type": "Mobile/static",
+      "IconName": "caravan.png"
+  },
+   {
+      "Type": "Land",
+      "IconName": "land.png"
+  },
+   {
+      "Type": "Studio",
+      "IconName": "flat.png"
+  },
+   {
+      "Type": "Block of flats ",
+      "IconName": "flat.png"
+  },
+   {
+      "Type": "Office",
+      "IconName": "flat.png"
+  }
+]

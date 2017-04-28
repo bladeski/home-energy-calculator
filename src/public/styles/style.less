@@ -1,13 +1,23 @@
-@primary-component-bg: #ccefff;
-@active-component-bg: #009dff;
+@primary-colour: rgb(204, 239, 255);
+@primary-colour-2: rgb(235, 246, 251);
+@primary-colour-3: rgb(0, 178, 255);
+@primary-colour-3-border: rgba(0, 178, 255, 0.8);
+@primary-colour-3-shadow: rgba(0, 178, 255, 0.6);
+
+@secondary-colour: rgb(255, 236, 204);
+@secondary-colour-2: rgb(251, 244, 235);
+@secondary-colour-3: rgb(255, 184, 0);
+
+@error-color: rgb(254, 60, 77);
+@error-color-border: rgb(254, 60, 77, 0.8);
+@error-color-shadow: rgb(254, 60, 77, 0.6);
 
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 50px;
 }
 
 a {
-  color: #00B7FF;
+  color: @primary-colour-3;
 }
 
 #map-canvas {
@@ -16,17 +26,17 @@ a {
 
 nav {
     &.navbar.navbar-main {
-        background-color: @primary-component-bg;
-        // border-color: #abeeab;
+        background-color: @primary-colour;
 
-        span.navbar-brand {
-            color: @active-component-bg;
+        span.navbar-brand.fa {
+            color: @secondary-colour-3;
+            font-size: 2em;
         }
 
         ul.navbar-nav {
             >li.active {
                 a {
-                    background-color: @active-component-bg;
+                    background-color: @primary-colour-3;
                     color: #fff;
                 }
             }
@@ -34,18 +44,50 @@ nav {
     }
 }
 
-div.input-group-addon {
-    background-color: @primary-component-bg;
+div.panel {
+    div.panel-heading {
+        background-color: @primary-colour-2;
+
+        &.result-panel {
+            text-align: right;
+            background-color: @secondary-colour-2;
+
+            h2 {
+                font-size: 50px;
+            }
+
+            button.tariff-details-button {
+                background-color: @primary-colour-3;
+
+                &:empty {
+                    display: inline-block;
+                }
+            }
+        }
+    }
 }
 
-.navbar-brand.fa-lg {
-    font-size: 2em;
+div.input-group-addon {
+    background-color: @primary-colour-2;
+}
+
+div.form-group {
+    .form-control:focus {
+        border-color: @primary-colour-3-border;
+        -webkit-box-shadow: 0 0 8px @primary-colour-3-shadow;
+        box-shadow: 0 0 8px @primary-colour-3-shadow;
+    }
+}
+
+button.btn-search {
+    background-color: @primary-colour-3;
+    color: #fff;
 }
 
 .gas-icon {
-    color: #7cdcff;
+    color: @primary-colour-3;
 }
 
 .elec-icon {
-    color: #ff9900;
+    color: @secondary-colour-3;
 }

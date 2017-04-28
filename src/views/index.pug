@@ -1,7 +1,7 @@
 extends layout
 
 block headerScripts
-    script(src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true")
+    script(src="https://maps.googleapis.com/maps/api/js?v=3.exp")
 
 block content
 
@@ -15,21 +15,32 @@ block content
         nav(class="navbar navbar-default navbar-main")
             div(class="container-fluid")
                 div(class="navbar-header")
+                    button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false")
+                        span(class="sr-only") Toggle navigation
+                        span(class="icon-bar")
+                        span(class="icon-bar")
+                        span(class="icon-bar")
                     span(class="navbar-brand fa fa-calculator fa-lg")
-                div(class="collapse navbar-collapse" id="bs-example-navbar-collapse-1")
+                        
+                div(class="collapse navbar-collapse" id="navbar-collapse-1" aria-expanded="true")
                     ul(class="nav navbar-nav")
                         li(role="presentation" data-bind="css: {active: isOwner}")
                             a(class="btn btn-link" data-bind="click: setOwner") Owner
                         li(role="presentation" data-bind="css: {active: !isOwner()}")
                             a(class="btn btn-link" data-bind="click: setBuyer") Buyer
 
-
         div(class="row show-grid")
+            
             div(class="col-md-6")
                 div(class="panel panel-default")
-                    div(class="panel-heading")
-                        h2(data-bind="visible: isOwner") Owner Form
-                        h2(data-bind="visible: !isOwner()") Buyer Form
+                    div(class="panel-heading result-panel")
+                        h2(data-bind="html: resultHeaderText")
+                        button(type="button" class="btn btn-link badge fa fa-info tariff-details-button" data-bind="click: toggleTariffDetails")
+                    div(class="panel-body" data-bind="visible: showTariffDetails")
+                        span(data-bind="html: resultBodyText")
+                            
+            div(class="col-md-6")
+                div(class="panel panel-default")
                     div(class="panel-body")
                         div(data-bind="visible: isOwner")
                             form(id="owner-form")
@@ -82,12 +93,23 @@ block content
                                                 | Does not have Gas.
 
                         div(data-bind="visible: !isOwner()")
+                            form(id="buyer-form")
+                                div(class="form-group")
+                                    h3 Future property
+                                    label(for="buyer-postcode") Enter the postcode:
+                                    input(type="text" class="form-control" id="buyer-postcode" placeholder="Required" data-bind="value: buyerPostcode" required)
+                                div(class="form-group")
+                                    div(class="radio")
+                                        label
+                                            input(type="radio" name="buyerPlansTo" id="buyerPlansToBuy" value="sale" checked data-bind="checked: listingStatus") 
+                                            | I plan to buy.
+                                    div(class="radio")
+                                        label
+                                            input(type="radio" name="buyerPlansTo" id="buyerPlansToRent" value="rent" data-bind="checked: listingStatus")
+                                            | I plan to rent.
+                                div(class="form-group")
+                                    button(type="button" class="btn btn-default btn-search" data-bind="click: propertySearch, disable: !buyerPostcode()") Search
                             div(id="map-canvas")
-
-            div(class="col-md-6")
-                div(class="panel panel-default")
-                    div(class="panel-body")
-                        h2(data-bind="text: resultHeaderText")
-                        span(data-bind="text: resultBodyText")
+                                    
 block scripts
     script(data-main="/scripts/main" src="/lib/requirejs/require.js")

@@ -2,26 +2,33 @@
     'use strict';
 
     require.config({
+        shim : {
+            bootstrap : { deps :['jquery'] }
+        },
         paths: {
             jquery: '/lib/jquery/jquery.min',
+            bootstrap: '/lib/bootstrap/bootstrap.min',
             knockout: '/lib/knockout/knockout-latest',
             regionHelpers: '/scripts/regionHelpers',
             tariffHelpers: '/scripts/tariffHelpers',
-            consumerDataHelpers: '/scripts/consumerDataHelpers'
+            consumerDataHelpers: '/scripts/consumerDataHelpers',
+            propertyHelpers: '/scripts/propertyHelpers'
         }
     });
 
     requirejs([
         'jquery',
         'knockout',
+        'bootstrap',
         'regionHelpers',
         'tariffHelpers',
-        'consumerDataHelpers'
-    ], function($, ko, regionHelpers, tariffHelpers, consumerDataHelpers) {
+        'consumerDataHelpers',
+        'propertyHelpers'
+    ], function($, ko, bootstrap, regionHelpers, tariffHelpers, consumerDataHelpers, propertyHelpers) {
 
         google.maps.visualRefresh = true;
         var map,
-        mapInitialized = false;
+            mapInitialized = false;
 
         // Initialise the Google Maps map
         function initialize() {
@@ -114,11 +121,17 @@
             propertyAge: ko.observable(),
             hasGas: ko.observable('1'),
             bestTariff: ko.observable(),
+            listingStatus: ko.observable('sale'),
+            buyerPostcode: ko.observable(),
+            minPrice: ko.observable(),
+            maxPrice: ko.observable(),
             results: ko.observable(),
             regions: ko.observableArray(),
             tariffs: tariffHelpers.getTariffs(),
-            resultHeaderText: ko.observable('Please fill in the form to help us find the best tariff for you.'),
-            resultBodyText: ko.observable(''),
+            resultHeaderText: ko.observable('£0<small>/month</small>'),
+            resultBodyText: ko.observable('Please fill in the form to help us find the best tariff for you.'),
+            showTariffDetails: ko.observable(false),
+            icons: [],
             propertyTypes: [
                 'Detached',
                 'Semi-detached',
@@ -147,8 +160,16 @@
             mapInitialized || initialize();
         };
 
+        viewModel.toggleTariffDetails = function () {
+            viewModel.showTariffDetails(!viewModel.showTariffDetails());
+        };
+
         viewModel.setOptionDisable = function(option, item) {
             ko.applyBindingsToNode(option, {disable: item.disable}, item);
+        };
+
+        viewModel.propertySearch = function () {
+            propertyHelpers.propertySearch(viewModel, map);
         };
 
         viewModel.regionCode.subscribe(function () {
@@ -188,8 +209,8 @@
         });
 
         viewModel.bestTariff.subscribe(function (newTariff) {
-            var headerText = 'The best tariff that we have found is ' + newTariff.name + ' at around £' + Math.round(newTariff.total) + ' per month.',
-                bodyText = 'This would cost around £' + newTariff.totalGas.toFixed(2) + ' for gas, and £' + newTariff.totalElec.toFixed(2) + ' for electricity.'
+            var headerText = '£' + Math.round(newTariff.total) + '<small>/month</small>',
+                bodyText = 'The best tariff that we have found is ' + newTariff.name + ' at around £' + Math.round(newTariff.total) + '/month.<br>This would cost around £' + newTariff.totalGas.toFixed(2) + ' for gas, and £' + newTariff.totalElec.toFixed(2) + ' for electricity.'
 
             viewModel.resultHeaderText(headerText);
             viewModel.resultBodyText(bodyText);
@@ -197,6 +218,10 @@
 
         regionHelpers.getRegions(function (data) {
             viewModel.regions(data);
+        });
+
+        propertyHelpers.getIcons(function (icons) {
+            viewModel.icons = icons;
         });
 
         ko.applyBindings(viewModel);

@@ -17,7 +17,7 @@ gulp.task('build', ['clean'], function () {
     }, {
         name: 'Bootstrap',
         dir: 'bootstrap',
-        paths: ['bootstrap/dist/css/bootstrap.min*']
+        paths: ['bootstrap/dist/css/bootstrap.min*', 'bootstrap/dist/js/bootstrap.min*']
     }, {
         name: 'Font Awesome CSS',
         dir: 'font-awesome/css',

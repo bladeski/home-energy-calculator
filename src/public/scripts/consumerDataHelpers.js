@@ -2,8 +2,6 @@ define([], function () {
     var consumerDataHelpers = {};
 
     consumerDataHelpers.getConsumerData = function (callback) {
-        var consumerData = [];
-
         $.ajax({
             url: '/data/consumerData.json'
         }).done(function(data) {
