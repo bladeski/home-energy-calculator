@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="156.49205mm"
+   height="112.14002mm"
+   viewBox="0 0 156.49205 112.14002"
+   version="1.1"
+   id="svg4709"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="caravan.svg">
+  <defs
+     id="defs4703" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="228.06955"
+     inkscape:cy="259.04738"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1028"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata4706">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-21.917669,-20.168145)">
+    <path
+       id="rect4796"
+       style="fill:#00b2ff;fill-opacity:1;stroke:none;stroke-width:3.79284739;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+       d="m 21.917669,105.21999 h 19.99458 v 4.62844 H 21.917669 Z M 141.4514,115.59898 a 16.709196,16.709196 0 0 1 -16.7092,16.7092 16.709196,16.709196 0 0 1 -16.70919,-16.7092 16.709196,16.709196 0 0 1 16.70919,-16.709192 16.709196,16.709196 0 0 1 16.7092,16.709192 z m 24.43015,-64.875824 h 12.52817 v 38.297497 h -12.52817 z m 12.28859,-3.6296 A 36.560429,68.824112 81.011338 0 1 115.9034,93.958009 36.560429,68.824112 81.011338 0 1 42.212335,68.59958 36.560429,68.824112 81.011338 0 1 104.47907,21.735128 36.560429,68.824112 81.011338 0 1 178.17014,47.093556 Z m -136.257893,19.519 H 178.40971 V 109.8484 H 41.912247 Z" />
+  </g>
+</svg>

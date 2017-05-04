@@ -14,7 +14,8 @@ define([], function () {
         var result = {
                 gas: 0,
                 elec: 0,
-                count: 0
+                count: 0,
+                accuracy: 3
             },
             count = 0,
             lowestGas = 100000,
@@ -24,37 +25,39 @@ define([], function () {
             totalGas = 0,
             totalElec = 0,
             filtered = [],
-            matchingResults = consumerData.filter(function (property) {
-                return (!viewModel.propertyType() || viewModel.propertyType() === property.propertyType)
-                    && (!viewModel.numberOfBedrooms() || viewModel.numberOfBedrooms() === property.bedrooms)
-                    && (!viewModel.numberOfBathrooms() || viewModel.numberofBathrooms() === property.numberofBathrooms)
-                    && (!viewModel.propertyAge() || viewModel.propertyAge() === property.propertyBuilt)
-                    && (!viewModel.hasCentralHeating() || viewModel.hasCentralHeating() === property.centralHeating)
-                    && (!viewModel.hasLoftInsulation() || viewModel.hasLoftInsulation() === property.loftInsulation)
-                    && (!viewModel.wallType() || viewModel.wallType() === property.wallType)
-                    && ((viewModel.hasGas() === '0' && property.gasKwh === 0) || property.gasKwh > 0);
-            });
+            countThreshold = 3,
+            resultFilter = function (property) {
+                var matchCount = 0;
 
-        if (matchingResults.length === 0) {
-            matchingResults = consumerData.filter(function (property) {
-                return (!viewModel.propertyType() || viewModel.propertyType() === property.propertyType)
-                    && (!viewModel.numberOfBedrooms() || viewModel.numberOfBedrooms() === property.bedrooms)
-                    && (!viewModel.numberOfBathrooms() || viewModel.numberofBathrooms() === property.numberofBathrooms)
-                    && (!viewModel.propertyAge() || viewModel.propertyAge() === property.propertyBuilt)
-                    && ((viewModel.hasGas() === '0' && property.gasKwh === 0) || property.gasKwh > 0);
-            });
-            filtered.push('1');
-        }
+                if (viewModel.numberOfBathrooms() === property.numberofBathrooms) {
+                    matchCount++;
+                }
+                if (viewModel.propertyAge() === property.propertyBuilt) {
+                    matchCount++;
+                }
+                if (viewModel.hasCentralHeating() === property.centralHeating) {
+                    matchCount++;
+                }
+                if (viewModel.hasLoftInsulation() === property.loftInsulation) {
+                    matchCount++;
+                }
+                if (viewModel.wallType() === property.wallType) {
+                    matchCount++;
+                }
 
-        if (matchingResults.length === 0) {
-            matchingResults = consumerData.filter(function (property) {
-                return (!viewModel.propertyType() || viewModel.propertyType() === property.propertyType)
+                return (!viewModel.propertyType() || viewModel.propertyType() === property.propertyType || viewModel.propertyType() === 'Other')
                     && (!viewModel.numberOfBedrooms() || viewModel.numberOfBedrooms() === property.bedrooms)
-                    && (!viewModel.numberOfBathrooms() || viewModel.numberofBathrooms() === property.numberofBathrooms)
-                    && ((viewModel.hasGas() === '0' && property.gasKwh === 0) || property.gasKwh > 0);
-            });
-            filtered.push('2');
-        }
+                    && ((viewModel.hasGas() === '0' && property.gasKwh === 0) || property.gasKwh > 0)
+                    && matchCount >= countThreshold;
+            },
+            matchingResults = [];
+
+        while (matchingResults.length === 0 && countThreshold >= 0) {
+            matchingResults = consumerData.filter(resultFilter);
+            countThreshold--;
+        };
+
+        result.accuracy = countThreshold;
 
         matchingResults.forEach(function (matchingResult) {
             totalGas += parseFloat(matchingResult.gasKwh);

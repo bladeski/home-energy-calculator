@@ -100,10 +100,34 @@
                             viewModel.resultBodyText('Please change your options or enter your current energy consumption.')
                         }
                         viewModel.results(estimatedConsumption.count);
+                        viewModel.accuracy(estimatedConsumption.accuracy);
                     });
                 });
 
             }
+        }
+
+        function updateBuyerCurrentUsage() {
+            var consumerData,
+                estimatedConsumption;
+
+            consumerDataHelpers.getConsumerData(function (consumerData) {
+                consumerDataHelpers.monthlyAverageConsumption(viewModel, consumerData, function (estimatedConsumption) {
+                    if (estimatedConsumption.count > 0) {
+                        tariffHelpers.getBestTariff(
+                            estimatedConsumption.gas,
+                            estimatedConsumption.elec,
+                            viewModel.regionCode(),
+                            function (tariff) {
+                                viewModel.bestTariff(tariff);
+                        });
+                    } else {
+                        viewModel.resultHeaderText('Unfortunately there were no results matching your property.');
+                        viewModel.resultBodyText('Please change your options or enter your current energy consumption.')
+                    }
+                    viewModel.results(estimatedConsumption.count);
+                });
+            });
         }
 
         var viewModel = {
@@ -151,6 +175,61 @@
             ]
         };
 
+        viewModel.selectedProperty = {
+            selected: ko.observable(false),
+            description: ko.observable(),
+            details_url: ko.observable(),
+            displayable_address: ko.observable(),
+            image_url: ko.observable(),
+            latitude: ko.observable(),
+            listing_id: ko.observable(),
+            listing_status: ko.observable(),
+            longitude: ko.observable(),
+            num_bathrooms: ko.observable(),
+            num_bedrooms: ko.observable(),
+            outcode: ko.observable(),
+            price: ko.observable(),
+            display_price: ko.pureComputed(function () {
+                return parseFloat(viewModel.selectedProperty.price()).toLocaleString('en-GB', { style: 'currency', currency: 'GBP' });
+            }),
+            property_type: ko.observable(),
+            short_description: ko.observable(),
+            status: ko.observable(),
+            thumbnail_url: ko.observable()
+        }
+
+        viewModel.setSelectedProperty = function (listing) {
+
+            viewModel.selectedProperty.selected(true);
+            viewModel.selectedProperty.description(listing.description);
+            viewModel.selectedProperty.details_url(listing.details_url);
+            viewModel.selectedProperty.displayable_address(listing.displayable_address);
+            viewModel.selectedProperty.image_url(listing.image_url);
+            viewModel.selectedProperty.latitude(listing.latitude);
+            viewModel.selectedProperty.listing_id(listing.listing_id);
+            viewModel.selectedProperty.listing_status(listing.listing_status);
+            viewModel.selectedProperty.longitude(listing.longitude);
+            viewModel.selectedProperty.num_bathrooms(listing.num_bathrooms);
+            viewModel.selectedProperty.num_bedrooms(listing.num_bedrooms);
+            viewModel.selectedProperty.outcode(listing.outcode);
+            viewModel.selectedProperty.price(listing.price);
+            viewModel.selectedProperty.property_type(listing.property_type);
+            viewModel.selectedProperty.short_description(listing.short_description);
+            viewModel.selectedProperty.status(listing.status);
+            viewModel.selectedProperty.thumbnail_url(listing.thumbnail_url);
+
+            viewModel.propertyType(propertyHelpers.getPropertyType(listing.property_type));
+            viewModel.numberOfBedrooms(propertyHelpers.getNumberOfBedrooms(listing.num_bedrooms));
+            viewModel.numberOfBathrooms(listing.num_bathrooms);
+            viewModel.hasCentralHeating(null);
+            viewModel.hasLoftInsulation(null);
+            viewModel.wallType(null);
+            viewModel.propertyAge(null);
+            viewModel.hasGas(null);
+
+            updateBuyerCurrentUsage();
+        };
+
         viewModel.setOwner = function () {
             viewModel.isOwner(true);
         };
@@ -170,6 +249,10 @@
 
         viewModel.propertySearch = function () {
             propertyHelpers.propertySearch(viewModel, map);
+        };
+
+        viewModel.selectProperty = function (index) {
+            console.log(index);
         };
 
         viewModel.regionCode.subscribe(function () {

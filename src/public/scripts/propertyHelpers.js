@@ -6,14 +6,6 @@ define(['knockout'], function (ko) {
     var apiKey = 'fvxgcw7pvdumvy8d65tk3kns';
     var zooplaQueryUrl = 'http://api.zoopla.co.uk/api/v1/property_listings.js?api_key=' + apiKey;
 
-    function markerListener(marker, infoWindow, map)
-    {
-        // so marker is associated with the closure created for the listenMarker function call
-        google.maps.event.addListener(marker, 'click', function() {
-            infoWindow.open(map, marker);
-        });
-    }
-
     /* Function to clear current overlays from Google map */
     function deleteOverlays() {
         if (propertyHelpers.markersArray) {
@@ -24,6 +16,67 @@ define(['knockout'], function (ko) {
         }
     }
 
+    function getScale(width, height) {
+        var ratio = parseInt(width) / parseInt(height),
+            scale = {
+                scale: 1,
+                anchor: ''
+            },
+            newWidth, newHeight;
+
+        if (ratio >= 1) { // Square or wide
+            newHeight = 16;
+            scale.scale = 1 / (height / newHeight);
+            scale.anchor = new google.maps.Point(width * scale.scale / 2, newHeight);
+        } else {
+            newWidth = 16;
+            scale.scale = 1 / (width / newWidth);
+            scale.anchor = new google.maps.Point(newWidth / 2, height * scale.scale);
+        }
+
+        return scale;
+    }
+
+    propertyHelpers.getNumberOfBedrooms = function (bedrooms) {
+
+        var numberOfBedrooms = parseInt(bedrooms);
+
+        if (numberOfBedrooms <= 2) {
+            return '1 to 2';
+        } else if (numberOfBedrooms <= 3) {
+            return '3';
+        } else {
+            return '4 +';
+        }
+    };
+
+    propertyHelpers.getPropertyType = function (type) {
+        var returnType;
+        switch (type) {
+            case 'End terrace house':
+                returnType = 'Terraced';
+                break;
+            case 'Terraced house':
+                returnType = 'Terraced';
+                break;
+            case 'Semi-detached house':
+                returnType = 'Semi-detached';
+                break;
+            case 'Detached house':
+                returnType = 'Detached';
+                break;
+            case 'Flat':
+                returnType = 'Flat';
+                break;
+            case 'Bungalow':
+                returnType = 'Bungalow';
+                break;
+            default:
+                returnType = 'Other';
+        }
+
+        return returnType;
+    };
 
     propertyHelpers.getProperties = function (queryString, callback) {
 
@@ -61,25 +114,54 @@ define(['knockout'], function (ko) {
         }
 
         propertyHelpers.getProperties(querySring, function (data) {
-            var latLong,
-                marker,
-                bounds = new google.maps.LatLngBounds();
+            var bounds = new google.maps.LatLngBounds();
 
             if(data.listing.length > 0){
 
                 deleteOverlays();
-                
+
                 data.listing.forEach(function (listing, index) {
 
-                    var icon = '/images/house-icon.png',
-                        iconName;
+                    var icon = {
+                            path: '',
+                            fillColor: '',
+                            fillOpacity: 1,
+                            scale: 0.01,
+                            strokeColor: '',
+                            strokeWeight: 0
+                        },
+                        iconName,
+                        iconDetails,
+                        marker,
+                        latLong;
 
-                    if (viewModel.icons.length > 0) {
-                        iconName = viewModel.icons.find(function (icon) {
-                            return icon.Type === listing.property_type;
+                    if (viewModel.icons) {
+                        iconName = viewModel.icons.iconMap.find(function (iconType) {
+                            return iconType.type === listing.property_type;
                         });
 
-                        icon = iconName ? '/images/' + iconName.IconName : icon;
+                        if (!iconName || !iconName.iconName) {
+                            iconName = {
+                                iconName: 'house'
+                            };
+                        }
+
+                        iconDetails = viewModel.icons.icons.find(function (icon) {
+                            return icon.tags[0] === iconName.iconName;
+                        });
+
+                        if (iconDetails) {
+                            scale = getScale(iconDetails.width, viewModel.icons.height);
+                            icon.path = iconDetails.paths[0];
+                            icon.fillColor = iconDetails.attrs[0].fill;
+                            icon.strokeColor = iconDetails.attrs[0].fill;
+                            icon.scale = scale.scale;
+                            icon.anchor = scale.anchor;
+                        } else {
+                            icon = '/images/house-icon.png';
+                        }
+                    } else {
+                        icon = '/images/house-icon.png';
                     }
 
                     latLong = new google.maps.LatLng(listing.latitude,listing.longitude);
@@ -87,24 +169,28 @@ define(['knockout'], function (ko) {
         				position: latLong,
         				map: map,
         				title: listing.displayable_address,
-                        icon: icon
+                        icon: icon,
+                        infoContent: '<div class="infoWindow">'+
+            				'<p><strong>' + listing.displayable_address + '</strong></p>'+
+            				'</div>',
+                        listing: listing
         			});
         			propertyHelpers.markersArray.push(marker);
 
                     bounds.extend(marker.position);
 
                     /* Adds property details to the marker's infoWindow and calls the markerListener function to place this on the map */
-        			contentString = '<div class="infoWindow">'+
-        				'<p><strong>' + listing.displayable_address + '</strong></p>'+
-        				'<p>' + listing.short_description + '</p>'+
-        				'<p><a href="' + listing.details_url + '" target=_blank">more details on the Zoopla website...</a></p>'+
-        				'<p><a href="#" onclick="selectProperty(' + index + ')">select property for your energy calculation...</a></p>'+
-        				'</div>';
+
         			var infoWindow = new google.maps.InfoWindow({
-        				content: contentString
+        				content: marker.infoContent
         			});
 
-        			markerListener(marker, infoWindow);
+        			marker.addListener('click', function() {
+                        infoWindow.open(map, marker);
+
+                        viewModel.setSelectedProperty(marker.listing);
+
+                    });
                 });
 
         		map.fitBounds(bounds);

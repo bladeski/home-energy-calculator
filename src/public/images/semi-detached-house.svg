@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="50.267113mm"
+   height="34.065975mm"
+   viewBox="0 0 50.267113 34.065975"
+   version="1.1"
+   id="svg9024"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="semi-detached-house.svg">
+  <defs
+     id="defs9018" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="20.722652"
+     inkscape:cy="32.779792"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1028"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata9021">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-27.215671,-123.44035)">
+    <path
+       style="fill:#00b2ff;fill-opacity:1;stroke:none;stroke-width:0.33408868;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 61.869141 0.00390625 A 5.33341 2.6789029 5.2502585e-007 0 0 59.345703 0.3984375 A 5.33341 2.6789029 5.2502585e-007 0 0 57.521484 1.3359375 L 29.001953 26.064453 L 0.72070312 50.583984 A 5.33341 2.6789029 5.2502585e-007 0 0 5.3242188 54.607422 L 10.400391 54.611328 L 10.400391 123.37109 C 10.400391 126.16085 12.507232 128.44942 15.222656 128.72461 C 15.286808 128.7313 15.35313 128.73001 15.417969 128.73438 C 15.536013 128.74208 15.653394 128.75391 15.773438 128.75391 L 47.855469 128.75391 A 0.16706105 0.16706105 0 0 0 48.017578 128.58398 L 48.017578 85.568359 L 75.964844 85.568359 L 75.964844 128.58398 A 0.16706105 0.16706105 0 0 0 76.134766 128.75391 L 108.2168 128.75391 L 113.84961 128.75391 A 0.16706105 0.16706105 0 0 0 114.01953 128.58398 L 114.01953 85.568359 L 141.9668 85.568359 L 141.9668 128.58398 A 0.16706105 0.16706105 0 0 0 142.13672 128.75391 L 174.21094 128.75391 C 174.31779 128.75391 174.42204 128.74245 174.52734 128.73633 C 174.60488 128.73175 174.68515 128.73251 174.76172 128.72461 C 177.47795 128.44942 179.5918 126.16085 179.5918 123.37109 L 179.5918 54.6875 L 184.64453 54.691406 A 5.33341 2.6789029 5.2502585e-007 0 0 189.27539 50.677734 L 160.90039 25.90625 L 132.76562 1.3417969 A 5.33341 2.6789029 5.2502585e-007 0 0 125.3457 0.3984375 A 5.33341 2.6789029 5.2502585e-007 0 0 123.52148 1.3359375 L 95.041016 26.029297 L 94.900391 25.90625 L 66.765625 1.3417969 A 5.33341 2.6789029 5.2502585e-007 0 0 61.869141 0.00390625 z "
+       transform="matrix(0.26458333,0,0,0.26458333,27.215671,123.44035)"
+       id="path4506" />
+  </g>
+</svg>

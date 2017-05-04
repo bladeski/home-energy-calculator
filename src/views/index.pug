@@ -31,11 +31,20 @@ block content
 
         div(class="row show-grid")
             
-            div(class="col-md-6")
+            div(class="col-md-12")
                 div(class="panel panel-default")
                     div(class="panel-heading result-panel")
                         h2(data-bind="html: resultHeaderText")
                         button(type="button" class="btn btn-link badge fa fa-info tariff-details-button" data-bind="click: toggleTariffDetails")
+                        div(class="progress")
+                            div(class="progress-bar progress-bar-danger" style="width: 25%")
+                                span(class="sr-only") Very Low Accuracy
+                            div(class="progress-bar progress-bar-danger" style="width: 25%")
+                                span(class="sr-only") Low Accuracy
+                            div(class="progress-bar progress-bar-warning" style="width: 25%")
+                                span(class="sr-only") Medium Accuracy
+                            div(class="progress-bar progress-bar-success" style="width: 25%")
+                                span(class="sr-only") high Accuracy
                     div(class="panel-body" data-bind="visible: showTariffDetails")
                         span(data-bind="html: resultBodyText")
                             
@@ -110,6 +119,30 @@ block content
                                 div(class="form-group")
                                     button(type="button" class="btn btn-default btn-search" data-bind="click: propertySearch, disable: !buyerPostcode()") Search
                             div(id="map-canvas")
-                                    
+                                
+            div(class="col-md-6" data-bind="visible: selectedProperty.selected")
+                div(class="panel panel-default")
+                    div(class="panel-body")
+                        h3 Selected Property
+                        div(class="selected-property")
+                            table(class="table")
+                                tbody
+                                    tr
+                                        th Address
+                                        th
+                                            span(data-bind="text: selectedProperty.displayable_address")
+                                            span
+                                                img(class="img-responsive img-thumbnail" data-bind="attr: {src: selectedProperty.image_url()}")
+                                    tr
+                                        th Description
+                                        td(class="property-description")
+                                            span(data-bind="html: selectedProperty.short_description")
+                                            span
+                                                a(data-bind="attr: {href: selectedProperty.details_url}") More...
+                                    tr
+                                        th Price
+                                        td
+                                            span(data-bind="text: selectedProperty.display_price")
+                                
 block scripts
     script(data-main="/scripts/main" src="/lib/requirejs/require.js")
