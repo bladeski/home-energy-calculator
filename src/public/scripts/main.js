@@ -70,10 +70,26 @@
             map.setCenter(options.position);
         }
 
-        function updateCurrentUsage() {
-            var consumerData,
-                estimatedConsumption;
+        function calculateConsumption(consumerData) {
+            consumerDataHelpers.monthlyAverageConsumption(viewModel, consumerData, function (estimatedConsumption) {
+                if (estimatedConsumption.count > 0) {
+                    tariffHelpers.getBestTariff(
+                        estimatedConsumption.gas,
+                        estimatedConsumption.elec,
+                        viewModel.regionCode(),
+                        function (tariff) {
+                            viewModel.bestTariff(tariff);
+                    });
+                } else {
+                    viewModel.resultHeaderText('Unfortunately there were no results matching your property.');
+                    viewModel.resultBodyText('Please change your options or enter your current energy consumption.')
+                }
+                viewModel.results(estimatedConsumption.count);
+                viewModel.accuracy(estimatedConsumption.accuracy);
+            });
+        }
 
+        function updateCurrentUsage() {
             if (viewModel.ownerKnowsUsage() === '1') {
                 if (viewModel.currentGasUsage() || viewModel.currentElecUsage()) {
                     tariffHelpers.getBestTariff(
@@ -85,49 +101,24 @@
                     });
                 }
             } else {
-                consumerDataHelpers.getConsumerData(function (consumerData) {
-                    consumerDataHelpers.monthlyAverageConsumption(viewModel, consumerData, function (estimatedConsumption) {
-                        if (estimatedConsumption.count > 0) {
-                            tariffHelpers.getBestTariff(
-                                estimatedConsumption.gas,
-                                estimatedConsumption.elec,
-                                viewModel.regionCode(),
-                                function (tariff) {
-                                    viewModel.bestTariff(tariff);
-                            });
-                        } else {
-                            viewModel.resultHeaderText('Unfortunately there were no results matching your property.');
-                            viewModel.resultBodyText('Please change your options or enter your current energy consumption.')
-                        }
-                        viewModel.results(estimatedConsumption.count);
-                        viewModel.accuracy(estimatedConsumption.accuracy);
+                if (viewModel.consumerData) {
+                    calculateConsumption(viewModel.consumerData);
+                } else {
+                    consumerDataHelpers.getConsumerData(function (consumerData) {
+                        calculateConsumption(consumerData);
                     });
-                });
-
+                }
             }
         }
 
         function updateBuyerCurrentUsage() {
-            var consumerData,
-                estimatedConsumption;
-
-            consumerDataHelpers.getConsumerData(function (consumerData) {
-                consumerDataHelpers.monthlyAverageConsumption(viewModel, consumerData, function (estimatedConsumption) {
-                    if (estimatedConsumption.count > 0) {
-                        tariffHelpers.getBestTariff(
-                            estimatedConsumption.gas,
-                            estimatedConsumption.elec,
-                            viewModel.regionCode(),
-                            function (tariff) {
-                                viewModel.bestTariff(tariff);
-                        });
-                    } else {
-                        viewModel.resultHeaderText('Unfortunately there were no results matching your property.');
-                        viewModel.resultBodyText('Please change your options or enter your current energy consumption.')
-                    }
-                    viewModel.results(estimatedConsumption.count);
+            if (viewModel.consumerData) {
+                calculateConsumption(viewModel.consumerData);
+            } else {
+                consumerDataHelpers.getConsumerData(function (consumerData) {
+                    calculateConsumption(consumerData);
                 });
-            });
+            }
         }
 
         var viewModel = {
@@ -139,8 +130,8 @@
             propertyType: ko.observable(),
             numberOfBedrooms: ko.observable(),
             numberOfBathrooms: ko.observable(),
-            hasCentralHeating: ko.observable(),
-            hasLoftInsulation: ko.observable(),
+            hasCentralHeating: ko.observable('Yes'),
+            insulationType: ko.observable(),
             wallType: ko.observable(),
             propertyAge: ko.observable(),
             hasGas: ko.observable('1'),
@@ -150,29 +141,20 @@
             minPrice: ko.observable(),
             maxPrice: ko.observable(),
             results: ko.observable(),
+            accuracy: ko.observable(0),
+            lowAccuracy: ko.observable('0%'),
+            mediumAccuracy: ko.observable('0%'),
+            highAccuracy: ko.observable('0%'),
             regions: ko.observableArray(),
             tariffs: tariffHelpers.getTariffs(),
             resultHeaderText: ko.observable('£0<small>/month</small>'),
             resultBodyText: ko.observable('Please fill in the form to help us find the best tariff for you.'),
             showTariffDetails: ko.observable(false),
             icons: [],
-            propertyTypes: [
-                'Detached',
-                'Semi-detached',
-                'Terraced',
-                'Bungalow',
-                'Flat',
-                'Other'
-            ],
-            numberOfBedroomsOptions: ['1 to 2', '3', '4 +'],
-            propertyAges: [
-                'pre 1870',
-                '1871 - 1919',
-                '1920 - 1945',
-                '1946 - 1954',
-                '1955 - 1979',
-                'post 1980'
-            ]
+            propertyTypes: ko.observableArray(),
+            numberOfBedroomsOptions: ko.observableArray(),
+            propertyAges: ko.observableArray(),
+            insulationTypes: ko.observableArray()
         };
 
         viewModel.selectedProperty = {
@@ -221,11 +203,11 @@
             viewModel.propertyType(propertyHelpers.getPropertyType(listing.property_type));
             viewModel.numberOfBedrooms(propertyHelpers.getNumberOfBedrooms(listing.num_bedrooms));
             viewModel.numberOfBathrooms(listing.num_bathrooms);
-            viewModel.hasCentralHeating(null);
-            viewModel.hasLoftInsulation(null);
+            viewModel.hasCentralHeating('Yes');
+            viewModel.insulationType(null);
             viewModel.wallType(null);
             viewModel.propertyAge(null);
-            viewModel.hasGas(null);
+            viewModel.hasGas('1');
 
             updateBuyerCurrentUsage();
         };
@@ -291,6 +273,14 @@
             updateCurrentUsage();
         });
 
+        viewModel.hasCentralHeating.subscribe(function () {
+            updateCurrentUsage();
+        });
+
+        viewModel.insulationType.subscribe(function () {
+            updateCurrentUsage();
+        });
+
         viewModel.bestTariff.subscribe(function (newTariff) {
             var headerText = '£' + Math.round(newTariff.total) + '<small>/month</small>',
                 bodyText = 'The best tariff that we have found is ' + newTariff.name + ' at around £' + Math.round(newTariff.total) + '/month.<br>This would cost around £' + newTariff.totalGas.toFixed(2) + ' for gas, and £' + newTariff.totalElec.toFixed(2) + ' for electricity.'
@@ -299,12 +289,89 @@
             viewModel.resultBodyText(bodyText);
         });
 
+        viewModel.accuracy.subscribe(function (value) {
+            if (value === 0) {
+                viewModel.lowAccuracy('0%');
+                viewModel.mediumAccuracy('0%');
+                viewModel.highAccuracy('0%');
+            } else if (value <= 40) {
+                viewModel.lowAccuracy(value + '%');
+                viewModel.mediumAccuracy('0%');
+                viewModel.highAccuracy('0%');
+            } else if (value <= 70) {
+                viewModel.lowAccuracy('40%');
+                viewModel.mediumAccuracy(value - 40 + '%');
+                viewModel.highAccuracy('0%');
+            } else if (value <= 100) {
+                viewModel.lowAccuracy('40');
+                viewModel.mediumAccuracy('30%');
+                viewModel.highAccuracy(value - 70 + '%');
+            } else {
+                viewModel.lowAccuracy('40%');
+                viewModel.mediumAccuracy('30%');
+                viewModel.highAccuracy('30%');
+            }
+        });
+
         regionHelpers.getRegions(function (data) {
             viewModel.regions(data);
         });
 
         propertyHelpers.getIcons(function (icons) {
             viewModel.icons = icons;
+        });
+
+        consumerDataHelpers.getConsumerData(function (data) {
+            viewModel.consumerData = data;
+            data.forEach(function (consumer) {
+                var type = viewModel.propertyTypes().find(function (propertyType) {
+                        return propertyType === consumer.propertyType;
+                    }),
+                    numberBeds = viewModel.numberOfBedroomsOptions().find(function (beds) {
+                        return beds === consumer.bedrooms;
+                    }),
+                    propertyAge = viewModel.propertyAges().find(function (age) {
+                        return age === consumer.propertyBuilt;
+                    }),
+                    insulationType = viewModel.insulationTypes().find(function (insulation) {
+                        return insulation === consumer.loftInsulation;
+                    });
+
+                if (type === undefined || type === null) {
+                    var propertyTypes = viewModel.propertyTypes();
+                    propertyTypes.push(consumer.propertyType);
+                    propertyTypes.sort();
+                    viewModel.propertyTypes(propertyTypes);
+                }
+
+                if (numberBeds === undefined || numberBeds === null) {
+                    var numberOfBedroomsOptions = viewModel.numberOfBedroomsOptions();
+                    numberOfBedroomsOptions.push(consumer.bedrooms);
+                    numberOfBedroomsOptions.sort();
+                    viewModel.numberOfBedroomsOptions(numberOfBedroomsOptions);
+                }
+
+                if (propertyAge === undefined || propertyAge === null) {
+                    var propertyAges = viewModel.propertyAges();
+                    propertyAges.push(consumer.propertyBuilt);
+                    propertyAges.sort(function (a, b) {
+                        if ((a.substr(0,3) === 'pre') !== (b.substr(0,3) === 'pre')) {
+                            return a.substr(0,3) === 'pre' ? 1 : -1;
+                        } else if ((a.substr(0,4) === 'post') !== (b.substr(0,4) === 'post')) {
+                            return a.substr(0,4) === 'post' ? -1 : 1;
+                        }
+                        return a < b ? 1 : a > b ? -1 : 0;
+                    });
+                    viewModel.propertyAges(propertyAges);
+                }
+
+                if (insulationType === undefined || insulationType === null) {
+                    var insulationTypes = viewModel.insulationTypes();
+                    insulationTypes.push(consumer.loftInsulation);
+                    insulationTypes.sort();
+                    viewModel.insulationTypes(insulationTypes);
+                }
+            });
         });
 
         ko.applyBindings(viewModel);

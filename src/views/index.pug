@@ -36,14 +36,13 @@ block content
                     div(class="panel-heading result-panel")
                         h2(data-bind="html: resultHeaderText")
                         button(type="button" class="btn btn-link badge fa fa-info tariff-details-button" data-bind="click: toggleTariffDetails")
-                        div(class="progress")
-                            div(class="progress-bar progress-bar-danger" style="width: 25%")
-                                span(class="sr-only") Very Low Accuracy
-                            div(class="progress-bar progress-bar-danger" style="width: 25%")
+                        h3 Calculation accuracy:
+                        div(class="progress" id="accuracy-meter" data-bind="visible: accuracy() !== null")
+                            div(class="progress-bar progress-bar-danger" data-bind="style: { width: lowAccuracy}")
                                 span(class="sr-only") Low Accuracy
-                            div(class="progress-bar progress-bar-warning" style="width: 25%")
+                            div(class="progress-bar progress-bar-warning" data-bind="style: { width: mediumAccuracy}")
                                 span(class="sr-only") Medium Accuracy
-                            div(class="progress-bar progress-bar-success" style="width: 25%")
+                            div(class="progress-bar progress-bar-success" data-bind="style: { width: highAccuracy}")
                                 span(class="sr-only") high Accuracy
                     div(class="panel-body" data-bind="visible: showTariffDetails")
                         span(data-bind="html: resultBodyText")
@@ -100,7 +99,19 @@ block content
                                             label
                                                 input(type="radio" name="hasGas" id="hasNoGas" value="0" data-bind="checked: hasGas")
                                                 | Does not have Gas.
-
+                                    div(class="form-group")
+                                        div(class="radio")
+                                            label
+                                                input(type="radio" name="hasCentralHeating" id="hasCentralHeating" value="Yes" checked data-bind="checked: hasCentralHeating") 
+                                                | Has central heating.
+                                        div(class="radio")
+                                            label
+                                                input(type="radio" name="hasCentralHeating" id="hasNoCentralHeating" value="No" data-bind="checked: hasCentralHeating")
+                                                | Does not have central heating.
+                                        div(class="form-group")
+                                            label(for="loftInsulationList") Loft insulation:
+                                            select(id="loftInsulationList" class="form-control" data-bind="value: insulationType, options: insulationTypes, optionsCaption: 'Please select the type of insulation in your property.'")
+                                        
                         div(data-bind="visible: !isOwner()")
                             form(id="buyer-form")
                                 div(class="form-group")
