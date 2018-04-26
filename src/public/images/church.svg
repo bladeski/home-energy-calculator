@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="79.89225mm"
+   height="79.89225mm"
+   viewBox="0 0 79.892251 79.89225"
+   version="1.1"
+   id="svg4693"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="church.svg">
+  <defs
+     id="defs4687" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="-114.18984"
+     inkscape:cy="63.795851"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1028"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata4690">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-38.940988,-78.260878)">
+    <path
+       style="fill:#00b2ff;fill-opacity:1;stroke:#00b2ff;stroke-width:0.14001581;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+       d="m 78.381086,78.330986 c -0.544865,0 -0.984435,0.439577 -0.984435,0.984438 v 2.490288 h -4.806427 c -0.29774,0 -0.539501,0.241244 -0.539501,0.538985 v 1.906341 c 0,0.297749 0.241761,0.536919 0.539501,0.536919 h 4.806427 v 8.132837 l -4.230233,3.525366 -5.263763,4.38475 a 0.68954168,0.68954168 0 0 0 0.441317,1.21853 l 0.941546,10e-4 v 10.22831 l -3.542938,2.95228 -12.092283,10.07225 a 1.5841498,1.5841498 0 0 0 1.011825,2.80293 l 2.168342,0.002 v 27.76626 c 0,1.22477 1.026475,2.20865 2.296501,2.20865 h 13.714923 a 0.07001491,0.07001491 0 0 0 0.07028,-0.0704 V 140.3427 h 11.951208 v 17.66973 a 0.07001491,0.07001491 0 0 0 0.07028,0.0703 h 13.714926 c 1.270029,0 2.297018,-0.98387 2.297018,-2.20865 v -27.73423 l 2.16369,0.002 a 1.5841498,1.5841498 0 0 0 1.01958,-2.79879 l -12.130527,-10.17618 -3.509349,-2.944 v -10.15597 l 0.942579,5.2e-4 a 0.68954168,0.68954168 0 0 0 0.443386,-1.21852 l -5.280816,-4.429721 -4.215247,-3.535701 v -8.095631 h 4.806942 c 0.297739,0 0.538986,-0.239194 0.538986,-0.536919 v -1.906341 c 0,-0.297717 -0.241247,-0.538985 -0.538986,-0.538985 h -4.806942 v -2.490288 c 0,-0.544848 -0.439571,-0.984438 -0.984435,-0.984438 z"
+       id="path4568"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>

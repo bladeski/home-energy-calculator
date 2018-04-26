@@ -4,7 +4,7 @@ define(['knockout'], function (ko) {
     };
 
     var apiKey = 'fvxgcw7pvdumvy8d65tk3kns';
-    var zooplaQueryUrl = 'http://api.zoopla.co.uk/api/v1/property_listings.js?api_key=' + apiKey;
+    var zooplaQueryUrl = 'https://api.zoopla.co.uk/api/v1/property_listings.js?api_key=' + apiKey;
 
     /* Function to clear current overlays from Google map */
     function deleteOverlays() {
@@ -70,6 +70,9 @@ define(['knockout'], function (ko) {
                 break;
             case 'Bungalow':
                 returnType = 'Bungalow';
+                break;
+            case 'Land':
+                returnType = 'Land';
                 break;
             default:
                 returnType = 'Other';
@@ -186,8 +189,13 @@ define(['knockout'], function (ko) {
         			});
 
         			marker.addListener('click', function() {
-                        infoWindow.open(map, marker);
 
+                        if (propertyHelpers.openWindow) {
+                            propertyHelpers.openWindow.close();
+                        }
+
+                        infoWindow.open(map, marker);
+                        propertyHelpers.openWindow = infoWindow;
                         viewModel.setSelectedProperty(marker.listing);
 
                     });

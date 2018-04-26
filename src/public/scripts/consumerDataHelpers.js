@@ -70,6 +70,16 @@ define([], function () {
             },
             matchingResults = [];
 
+        if (viewModel.propertyType() === 'Land') {
+            result.gas = 0;
+            result.elec = 0;
+            result.count = 0;
+            result.accuracy = 100;
+
+            callback && callback(result);
+            return true;
+        }
+
         while (matchingResults.length === 0 && countThreshold >= 0) {
             accuracy = 0;
             matchingResults = consumerData.filter(resultFilter);

@@ -200,14 +200,14 @@
             viewModel.selectedProperty.status(listing.status);
             viewModel.selectedProperty.thumbnail_url(listing.thumbnail_url);
 
-            viewModel.propertyType(propertyHelpers.getPropertyType(listing.property_type));
-            viewModel.numberOfBedrooms(propertyHelpers.getNumberOfBedrooms(listing.num_bedrooms));
-            viewModel.numberOfBathrooms(listing.num_bathrooms);
-            viewModel.hasCentralHeating('Yes');
-            viewModel.insulationType(null);
-            viewModel.wallType(null);
-            viewModel.propertyAge(null);
-            viewModel.hasGas('1');
+            viewModel.propertyType(propertyHelpers.getPropertyType(listing.property_type))
+                .numberOfBedrooms(propertyHelpers.getNumberOfBedrooms(listing.num_bedrooms))
+                .numberOfBathrooms(listing.num_bathrooms)
+                .hasCentralHeating('Yes')
+                .insulationType(null)
+                .wallType(null)
+                .propertyAge(null)
+                .hasGas('1');
 
             updateBuyerCurrentUsage();
         };
